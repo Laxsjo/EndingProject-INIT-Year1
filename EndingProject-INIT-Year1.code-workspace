@@ -4,5 +4,9 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cssvar.files": [
+			"C:/xampp/vhosts/EndingProject-INIT-Year1/css/theme.css"
+		]
+	}
 }

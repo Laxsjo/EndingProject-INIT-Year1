@@ -6,8 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Meddelanden & Nyheter | AcademyWare</title>
 
+		<!-- <script src="node_modules/ical/ical.js"></script> -->
+		<script src="/node_modules/ical/ical.js"></script>
+		<script type="module" src="/js/index.js"></script>
+
 		<link rel="stylesheet" href="/css/style.css" />
 		<link rel="stylesheet" href="/css/theme.css" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body>
 		<div class="hiddenNav"></div>
@@ -18,21 +29,31 @@
 			<nav>
 				<ul>
 					<li>
-						<a href="/schedule.html">Schema</a>
+						<a class="fancyLink noColor" href="/schedule.html"
+							>Schema</a
+						>
 					</li>
 					<li>
-						<a href="/messages.html" aria-current="page">
+						<a
+							class="fancyLink"
+							href="/messages.html"
+							aria-current="page"
+						>
 							Nyheter & Meddelanden
 						</a>
 					</li>
 					<li>
-						<a href="/tasks.html">Uppgifter & Resultat</a>
+						<a class="fancyLink noColor" href="/tasks.html"
+							>Uppgifter & Resultat</a
+						>
 					</li>
 					<li>
-						<a href="/settings.html">Inställningar</a>
+						<a class="fancyLink noColor" href="/settings.html"
+							>Inställningar</a
+						>
 					</li>
 					<li>
-						<a href="#">Om sidan</a>
+						<a class="fancyLink noColor" href="#">Om sidan</a>
 					</li>
 				</ul>
 			</nav>

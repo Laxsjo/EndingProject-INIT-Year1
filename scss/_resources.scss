@@ -1,0 +1,64 @@
+@use "sass:color";
+@use "sass:math";
+
+@mixin colorFilter($color: #000 /*, $opacity: 1*/, $additionalFilters: "") {
+	$r: red($color) / 255;
+	$g: green($color) / 255;
+	$b: blue($color) / 255;
+	$a: alpha($color);
+	// $a: $opacity;
+
+	// grayscale fallback if SVG from data url is not supported
+	$lightness: lightness($color);
+	filter: saturate(0%) brightness(0%) invert($lightness) opacity($a) #{$additionalFilters};
+
+	// color filter
+	$svg-filter-id: "colorFilter";
+	filter: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg">\
+      <filter id="#{$svg-filter-id}" color-interpolation-filters="sRGB">\
+        <feColorMatrix type="matrix" values="\
+          0 0 0 0 #{$r}\
+          0 0 0 0 #{$g}\
+          0 0 0 0 #{$b}\
+          0 0 0 #{$a} 0\
+        "/>\
+      </filter>\
+    </svg>\
+    ##{$svg-filter-id}')
+		#{$additionalFilters};
+}
+
+@function strip-unit($number) {
+	@if type-of($number) == "number" and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function exponent-gradient(
+	$direction,
+	$color0,
+	$color1,
+	$exponent,
+	$iterations: 20
+) {
+	$colors: "";
+	@for $i from 0 to $iterations {
+		$colors: $colors +
+			color.mix(
+				$color1,
+				$color0,
+				math.pow($i / $iterations, $exponent) * 100%
+			) +
+			// " " +
+			// ($i / 20 * 100%) +
+			", ";
+	}
+	$colors: str-slice($colors, 1, -3);
+	@debug "hello";
+
+	@return linear-gradient($direction, #{$colors});
+	// @return black;
+}

@@ -1,3 +1,34 @@
+@import url('/css/icons.css');
+@import url('/css/theme.css');
+@import url('/css/definitions.css');
+@import url('/css/input.css');
+@import url('/css/document.css');
+
+:root {
+	--goldenRatio: 1.61803398875;
+
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+
+	font-family: 'Noto Sans Display', Arial, sans-serif;
+
+	color: var(--textColor);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--titleTextColor);
+}
+
 :focus-visible {
 	outline: 2px dotted var(--focusColor1);
 	position: relative;
@@ -13,25 +44,17 @@
 	position: relative;
 	text-decoration: none;
 	background: linear-gradient(
-				90deg,
-				var(--underlineHoverColor1),
-				var(--underlineHoverColor2)
-			)
-			100% 100%/0% 2px no-repeat,
-		linear-gradient(90deg, var(--underlineColor1), var(--underlineColor2))
-			0% 100%/100% 2px no-repeat;
-	background-image: linear-gradient(
 			90deg,
 			var(--underlineColor1),
 			var(--underlineColor2)
-		),
-		linear-gradient(transparent, transparent);
+		)
+		100% 100%/0% 2px no-repeat;
 	transition: background-size 0.2s;
 }
-.fancyLink[target="_blank"]::after {
-	content: "open_in_new";
+a[target='_blank']::after {
+	content: 'open_in_new';
 	font-size: 0.9em;
-	font-family: "Material Icons Outlined";
+	font-family: 'Material Icons Outlined';
 	vertical-align: text-top;
 }
 .fancyLink.noUnderline {
@@ -49,11 +72,11 @@
 	--underlineHoverColor2: currentColor;
 }
 
-a:link:not(.noColor) {
+a {
 	color: var(--linkNormal);
 }
 
-a:visited:not(.noColor) {
+a:visited {
 	color: var(--linkVisited);
 }
 
@@ -78,8 +101,8 @@ a:visited:not(.noColor) {
 		linear-gradient(transparent, transparent);
 }
 
-a:hover:not(.noColor),
-a:focus-visible:not(.noColor) {
+a:hover,
+a:focus-visible {
 	color: var(--linkHover1);
 }
 
@@ -115,72 +138,30 @@ a.documentLink.fancyLink {
 	--underlineHoverColor2: var(--documentHoverColor2);
 }
 
-.dark {
-	color: var(--textSecondaryColor);
-	--linkNormal: var(--linkSecondaryNormal);
-	--linkHover1: var(--linkSecondaryHover1);
-	--linkHover2: var(--linkSecondaryHover2);
-	--linkVisited: var(--linkSecondaryVisited);
-}
+.asideContent {
+	float: right;
 
-body {
-	margin: 0;
-	padding: 0;
+	margin-left: 2rem;
+	padding-inline: 0.6rem;
+	padding-block: 0.4rem;
 
-	font-family: "Noto Sans";
+	border-left: 2px solid var(--coloredTitleTextColor1);
 
-	color: var(--textColor);
+	background-color: var(--contentBackground3);
 
-	background: var(--contentBackdropBackground1);
-}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h5 {
+		margin-top: 0;
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	color: var(--titleTextColor);
-}
-
-header {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-between;
-	align-items: center;
-
-	background: var(--headerBackground1);
-
-	.logo {
-		margin-inline: 0.5rem;
+		font-size: 1.4rem;
 	}
+}
 
-	nav {
-		flex-grow: 1;
-
-		& > ul {
-			overflow-x: auto;
-			overscroll-behavior-x: contain;
-
-			display: flex;
-			flex-flow: row nowrap;
-			align-items: stretch;
-
-			width: 100%;
-
-			& > li {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-
-				flex-grow: 1;
-
-				&:hover,
-				&:focus-within {
-					background: var(--menuHoverBackground1);
-				}
-			}
-		}
-	}
+.scrollDetector {
+	width: 0;
+	height: 0;
 }

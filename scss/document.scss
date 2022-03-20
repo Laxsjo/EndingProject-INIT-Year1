@@ -1,0 +1,174 @@
+@use 'resources' as *;
+
+body {
+	// display: flex;
+
+	background: var(--contentBackdropBackground1);
+}
+
+.coverImage {
+	display: block;
+
+	width: 100vw;
+	height: 25rem;
+
+	object-fit: cover;
+	object-position: center;
+}
+
+header {
+	--logoWidth: 20rem;
+
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+
+	position: fixed;
+	top: 0;
+
+	width: 100vw;
+	padding: 1rem 1rem;
+
+	background-color: transparent;
+
+	transition: none ease-out 0.15s;
+	transition-property: background-color;
+
+	.logo {
+		--width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
+
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		gap: 0.5rem;
+
+		position: absolute;
+		// top: 0;
+
+		padding: 0.5rem;
+		// margin-top: 1rem;
+
+		transition: none ease-out;
+
+		img {
+			filter: invert(1);
+
+			width: calc(
+				(var(--width) * var(--goldenRatio)) / (1 + var(--goldenRatio))
+			);
+			height: auto;
+			// aspect-ratio: 3 / 5;
+
+			transition: inherit;
+			transition-property: width;
+		}
+		.name {
+			--factor: 0.281690140845; // Magic constant that you multiply with your desired width, which gives you the appropriate font size to set.
+
+			font-size: calc(
+				(var(--width) / (1 + var(--goldenRatio))) * var(--factor)
+			);
+			font-family: 'EB Garamond', 'Times New Roman', serif;
+			font-style: italic;
+			font-weight: 400;
+
+			color: var(--titleTextColor);
+
+			transition: inherit;
+			transition-property: font-size;
+		}
+	}
+
+	.menu {
+		margin-left: calc(var(--logoWidth) + 1.6rem);
+		// margin-bottom: 1rem;
+		padding: 0.5rem 1rem;
+
+		transition: none ease-out;
+		transition-property: margin-left;
+
+		& > ul {
+			display: flex;
+			flex-flow: row nowrap;
+			align-items: center;
+			gap: var(--gapPair);
+
+			padding: 0;
+			margin: 0;
+
+			li {
+				margin: 0;
+
+				list-style-type: none;
+
+				a {
+					@include fancyLink;
+
+					--underlineColor1: var(--menuTextColor1);
+					--underlineColor2: var(--menuTextColor1);
+
+					color: var(--menuTextColor1);
+
+					&[aria-current] {
+						color: var(--menuColorColor2);
+					}
+
+					&:hover,
+					&:focus-visible {
+						--underlineColor1: var(--menuHoverTextColor1);
+						--underlineColor2: var(--menuHoverTextColor2);
+
+						color: var(--menuHoverTextColor1);
+					}
+				}
+			}
+		}
+	}
+
+	.logo,
+	.menu {
+		border: 2px solid var(--menuBorder1);
+		border-radius: 0.4rem;
+
+		background: var(--menuBackground1);
+
+		transition-timing-function: ease;
+		transition-duration: 0.3s;
+	}
+
+	:root.scrolling & {
+		--logoWidth: 12rem;
+
+		padding-block: 1.5rem;
+
+		background-color: var(--menuBackground1);
+
+		.logo,
+		.menu {
+			border: none;
+			background: none;
+		}
+
+		.logo {
+			top: 0;
+		}
+
+		// .logo {
+		// 	--width: 12rem;
+		// }
+	}
+}
+
+main {
+	min-width: min-content;
+	width: 50vw;
+	margin-inline: auto;
+	padding-block: var(--gapSection2);
+	padding-inline: var(--containerPadding-main);
+
+	background: var(--contentBackground2);
+
+	h1 {
+		margin-top: 0;
+	}
+}

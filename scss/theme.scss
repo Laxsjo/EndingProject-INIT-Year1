@@ -1,6 +1,40 @@
-@use "resources" as *;
+@use 'resources' as *;
 
 :root {
+	--headerSecondaryBackground1: hsl(217.5, 14.8%, 10.6%);
+	--headerSecondaryBackground2: hsl(216, 14.3%, 6.9%);
+
+	--contentSecondaryBackground1: hsl(220, 13%, 9%);
+
+	--textSecondaryColor: hsl(0, 0%, 80%);
+	--textSecondaryGrayColor: hsl(0, 0%, 64%);
+
+	--titleTextSecondaryColor1: hsl(0, 0%, 96%);
+
+	--coloredTextSecondaryColor1: hsl(94, 15%, 50%);
+	--coloredTextSecondaryColor2: hsl(218, 70%, 70%);
+
+	--coloredTextSecondaryHoverColor1: hsl(94, 15%, 60%);
+	--coloredTextSecondaryHoverColor2: hsl(218, 80%, 80%);
+
+	--coloredTitleTextSecondaryColor1: hsl(94, 22%, 55%);
+	--coloredTitleTextSecondaryColor2: hsl(218, 80%, 63%);
+
+	--coloredTitleTextSecondaryHoverColor1: hsl(94, 22%, 65%);
+	--coloredTitleTextSecondaryHoverColor2: hsl(218, 80%, 75%);
+
+	--mdSecondaryColor1: hsla(0, 0%, 100%, 1);
+	--mdInactiveSecondaryColor1: hsla(0, 0%, 100%, 0.3);
+
+	--linkSecondaryNormal: hsl(232, 69%, 67%);
+	--linkSecondaryHover1: hsl(354, 85%, 63%);
+	--linkSecondaryHover2: hsl(30, 85%, 63%);
+	--linkSecondaryVisited: hsl(300, 33%, 59%);
+}
+
+:root {
+	color-scheme: dark;
+	// s
 	--accentColor1: hsl(218.9, 80%, 63.1%);
 
 	--headerBackground1: #{exponent-gradient(

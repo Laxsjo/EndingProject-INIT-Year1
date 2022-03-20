@@ -1,0 +1,21 @@
+:root {
+	--gapSection2: 2rem;
+	--gapSection1: 1.5rem;
+	--gapPair: 1.2rem;
+	--gapWithinPair: 0.6rem;
+	--gapWithinSubPair: 0.3rem;
+
+	--containerPadding-main: clamp(1.2rem, 0.4rem + 1.5vw, 2.5rem);
+	--containerPadding-page: 1.2rem;
+	--containerPadding-fieldset: 1rem;
+	--containerPadding-medium: 0.6rem;
+	--containerPadding-small: 0.4rem;
+
+	--paragraphWidth-thin: 5ch + 10vw;
+	--paragraphWidth-medium: 9ch + 17.5vw;
+	--paragraphWidth-wide: 15ch + 30vw;
+
+	--paragraphMinWidth-thin: 30ch;
+	--paragraphMinWidth-medium: 40ch;
+	--paragraphMinWidth-wide: 50ch;
+}

@@ -6,8 +6,11 @@
 	],
 	"settings": {
 		"cssvar.files": [
-			"C:/xampp/vhosts/EndingProject-INIT-Year1/css/theme.css"
+			"css/theme.css",
+			"css/style.css",
+			"css/definitions.css"
 		],
+		// "cssVarriablesAutocomplete.files": ["css/theme.css"],
 		"cSpell.words": ["Barnarve"]
 	}
 }

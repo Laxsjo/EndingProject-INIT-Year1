@@ -1,8 +1,8 @@
-@import url("/css/icons.css");
-@import url("/css/theme.css");
-@import url("/css/definitions.css");
-@import url("/css/input.css");
-@import url("/css/document.css");
+@import url("/EndingProject-INIT-Year1/css/icons.css");
+@import url("/EndingProject-INIT-Year1/css/theme.css");
+@import url("/EndingProject-INIT-Year1/css/definitions.css");
+@import url("/EndingProject-INIT-Year1/css/input.css");
+@import url("/EndingProject-INIT-Year1/css/document.css");
 :root {
   --goldenRatio: 1.61803398875;
   margin: 0;

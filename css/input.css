@@ -1,1 +1,3 @@
-/*# sourceMappingURL=input.css.map */
+.sideMenu [role=menuitem]:not([aria-expanded=true]) + .submenu {
+  display: none;
+}/*# sourceMappingURL=input.css.map */

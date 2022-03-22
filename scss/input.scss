@@ -1,0 +1,9 @@
+.sideMenu {
+	// [role='menuitem']:not([aria-expanded='true']) {
+	// 	background-color: lightcoral;
+	// }
+	[role='menuitem']:not([aria-expanded='true']) + .submenu {
+		// background-color: lightcoral;
+		display: none;
+	}
+}

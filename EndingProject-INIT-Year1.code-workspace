@@ -11,6 +11,10 @@
 			"css/definitions.css"
 		],
 		// "cssVarriablesAutocomplete.files": ["css/theme.css"],
-		"cSpell.words": ["Alsarve", "arve", "Barnarve", "Sigsarve"]
+		"cSpell.words": ["Alsarve", "arve", "Barnarve", "Sigsarve"],
+		"files.exclude": {
+			"javascript/**": true,
+			"local.barnarve/**": true
+		}
 	}
 }

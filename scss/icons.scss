@@ -1,5 +1,5 @@
-.material-icons {
-	font-family: "Material Icons";
+@mixin icon {
+	font-family: 'Material Icons';
 	font-weight: normal;
 	font-style: normal;
 	// font-size: 24px;
@@ -13,22 +13,26 @@
 	white-space: nowrap;
 	word-wrap: normal;
 	direction: ltr;
-	-moz-font-feature-settings: "liga";
-	-webkit-font-feature-settings: "liga";
-	font-feature-settings: "liga";
+	-moz-font-feature-settings: 'liga';
+	-webkit-font-feature-settings: 'liga';
+	font-feature-settings: 'liga';
 	-webkit-font-smoothing: antialiased;
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+/Edge */
 	user-select: none; /* Standard */
+}
+
+.material-icons {
+	@include icon();
 
 	color: var(--mdColor1);
 }
 .material-icons.outlined {
-	font-family: "Material Icons Outlined" !important;
+	font-family: 'Material Icons Outlined' !important;
 }
 .material-icons.round {
-	font-family: "Material Icons Round" !important;
+	font-family: 'Material Icons Round' !important;
 }
 
 .md-small {

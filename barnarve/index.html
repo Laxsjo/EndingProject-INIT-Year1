@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" class="jsDisabled">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,8 +26,10 @@
 
 		<link rel="stylesheet" href="/EndingProject-INIT-Year1/css/style.css" />
 
+		<script src="/EndingProject-INIT-Year1/js/jsCheck.js"></script>
 		<script
 			type="module"
+			defer
 			src="/EndingProject-INIT-Year1/js/main.js"
 		></script>
 
@@ -81,9 +83,9 @@
 					aria-orientation="horizontal"
 				>
 					<li role="none">
-						<a role="menuitem" href="/EndingProject-INIT-Year1/"
-							>Hem</a
-						>
+						<a role="menuitem" href="/EndingProject-INIT-Year1/">
+							<span>Hem</span>
+						</a>
 					</li>
 					<li role="none">
 						<a
@@ -91,91 +93,118 @@
 							aria-current="page"
 							href="/EndingProject-INIT-Year1/barnarve/"
 						>
-							Barnarve
+							<span class="icon">home</span>
+							<span>Barnarve</span>
 						</a>
 					</li>
 					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/foundation.html"
-							>Stiftelsen</a
+							href="/EndingProject-INIT-Year1/foundation"
 						>
+							<span class="icon">group</span>
+							<span>Stiftelsen</span>
+						</a>
 					</li>
 					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/family.html"
-							>Släkten</a
+							href="/EndingProject-INIT-Year1/family"
 						>
+							<span class="icon">family_restroom</span>
+							<span>Släkten</span>
+						</a>
 					</li>
 					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/rent.html"
-							>Hyra hos oss</a
+							href="/EndingProject-INIT-Year1/rent"
 						>
+							<span class="icon">date_range</span>
+							<span>Hyra hos oss</span>
+						</a>
 					</li>
 					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/login.html"
-							>Logga in</a
+							href="/EndingProject-INIT-Year1/login"
 						>
+							<span class="icon">login</span>
+							<span>Logga in</span>
+						</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
-		<main>
-			<div class="leftColumn">
-				<nav class="pageNav">
-					<ul
-						class="sideMenu menuWidget"
-						role="menu"
-						aria-orientation="vertical"
-					>
-						<li>
-							<a href="" role="menuitem">Barnarve</a>
-						</li>
-						<li>
-							<a role="menuitem" href="houses/">Husen</a>
-							<ul class="submenu submenuWidget" role="menu">
-								<li>
-									<a
-										role="menuitem"
-										href="houses/storaHuset.html"
-									>
-										Stora Huset
-									</a>
-								</li>
-								<li>
-									<a
-										role="menuitem"
-										href="houses/funkis.html"
-									>
-										Funkis
-									</a>
-								</li>
-								<li>
-									<a
-										role="menuitem"
-										href="houses/strandstugan.html"
-									>
-										Strandstugan
-									</a>
-								</li>
-								<li>
-									<a
-										role="menuitem"
-										href="houses/tvattstugan.html"
-									>
-										Tvättstugan
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
-			</div>
+		<main class="leftNavMenu">
+			<nav class="pageNav">
+				<ul
+					class="sideMenu menuWidget"
+					role="menu"
+					aria-orientation="vertical"
+				>
+					<li>
+						<a
+							role="menuitem"
+							href="/EndingProject-INIT-Year1/barnarve/"
+							aria-current="location"
+						>
+							Barnarve
+						</a>
+					</li>
+					<li>
+						<a
+							role="menuitem"
+							href="/EndingProject-INIT-Year1/barnarve/houses/"
+						>
+							Husen
+						</a>
+						<span class="icon">expand_more</span>
+						<ul class="submenu submenuWidget" role="menu">
+							<li>
+								<a
+									role="menuitem"
+									href="/EndingProject-INIT-Year1/barnarve/houses/storaHuset.html"
+								>
+									Stora Huset
+								</a>
+							</li>
+							<li>
+								<a
+									role="menuitem"
+									href="/EndingProject-INIT-Year1/barnarve/houses/funkis.html"
+								>
+									Funkis
+								</a>
+							</li>
+							<li>
+								<a
+									role="menuitem"
+									href="/EndingProject-INIT-Year1/barnarve/houses/strandstugan.html"
+								>
+									Strandstugan
+								</a>
+							</li>
+							<li>
+								<a
+									role="menuitem"
+									href="/EndingProject-INIT-Year1/barnarve/houses/tvattstugan.html"
+								>
+									Tvättstugan
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a
+							role="menuitem"
+							href="/EndingProject-INIT-Year1/barnarve/location.html"
+						>
+							Platsen
+						</a>
+					</li>
+				</ul>
+			</nav>
 			<div>
 				<h1>Barnarve - en släktgård i Ljugarn</h1>
 				<p>

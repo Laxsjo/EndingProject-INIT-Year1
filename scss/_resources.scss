@@ -80,20 +80,20 @@
 		background-size: 100% 2px;
 		background-position: 0% 100%;
 		background-image: linear-gradient(
-				90deg,
-				var(
-					--underlineHoverColor1,
-					var(--underlineColor1, currentColor)
-				),
-				var(
-					--underlineHoverColor2,
-					var(--underlineColor2, currentColor)
-				)
-			),
-			linear-gradient(transparent, transparent);
+			90deg,
+			var(--underlineHoverColor1, var(--underlineColor1, currentColor)),
+			var(--underlineHoverColor2, var(--underlineColor2, currentColor))
+		);
 	}
 
 	&:focus-visible {
 		outline: 2px dotted currentColor;
+	}
+
+	@media (any-hover: none) {
+		background-size: 100% 1px !important;
+		background-position: 0% 100% !important;
+
+		--underlineColor2: var(--underlineColor1) !important;
 	}
 }

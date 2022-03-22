@@ -7,9 +7,10 @@
 	],
 	"settings": {
 		"cssvar.files": [
-			"css/theme.css",
-			"css/style.css",
-			"css/definitions.css"
+			"EndingProject-INIT-Year1/css/theme.css",
+			"EndingProject-INIT-Year1/css/style.css",
+			"EndingProject-INIT-Year1/css/definitions.css",
+			"EndingProject-INIT-Year1/css/icons.css"
 		],
 		// "cssVarriablesAutocomplete.files": ["css/theme.css"],
 		"cSpell.words": ["Alsarve", "arve", "Barnarve", "Sigsarve"],

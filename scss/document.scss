@@ -83,7 +83,17 @@ header {
 					--underlineColor1: var(--menuTextColor1);
 					--underlineColor2: var(--menuTextColor1);
 
+					display: block;
+
 					color: var(--menuTextColor1);
+
+					span {
+						vertical-align: middle;
+					}
+					.icon {
+						font-family: 'Material Icons Outlined';
+						font-size: var(--md-medium);
+					}
 
 					&[aria-current] {
 						color: var(--menuColorColor2);
@@ -149,6 +159,24 @@ main {
 
 	h1 {
 		margin-top: 0;
+	}
+
+	&.leftNavMenu {
+		display: grid;
+		grid-template:
+			'sidebar' '.' max-content
+			/ auto 1fr;
+
+		padding-top: 0;
+		padding-left: 0;
+
+		.pageNav {
+			grid-area: sidebar;
+		}
+
+		& > :nth-child(2) {
+			margin-top: var(--gapSection2);
+		}
 	}
 }
 

@@ -1,10 +1,113 @@
+@use 'resources' as *;
+@use 'icons.scss' as *;
+
 .sideMenu {
-	// [role='menuitem']:not([aria-expanded='true']) {
-	// 	background-color: lightcoral;
-	// }
 	list-style-type: none;
-	[role='menuitem']:not([aria-expanded='true']) + .submenu {
-		// background-color: lightcoral;
-		display: none;
+	// [role='menuitem']:not([aria-expanded='true']) + .submenu {
+	// 	// background-color: lightcoral;
+	// 	display: none;
+	// }
+	// display: flex;
+	// flex-flow: column nowrap;
+	// align-items: stretch;
+
+	margin: 0;
+	padding: 0;
+	margin-right: var(--gapSection1);
+	padding-block: var(--gapSection2);
+
+	background: var(--menuBackground1);
+	border: 0 solid var(--menuBorder1);
+	border-right-width: 2px;
+	border-bottom-width: 2px;
+
+	ul {
+		list-style-type: none;
+	}
+
+	[role='menuitem'] {
+		@include fancyLink;
+
+		--underlineColor1: var(--menuTextColor1);
+		--underlineColor2: var(--menuTextColor2);
+
+		color: var(--menuTextColor1);
+
+		&:hover,
+		&:focus-visible {
+			--underlineColor1: var(--menuHoverTextColor1);
+			--underlineColor2: var(--menuHoverTextColor2);
+
+			color: var(--menuHoverTextColor1);
+		}
+
+		&[aria-current],
+		&:active {
+			--underlineColor1: var(--menuColorColor2);
+			--underlineColor2: var(--documentVisitedColor1);
+
+			color: var(--menuColorColor2);
+		}
+
+		& + .icon {
+			display: none;
+		}
+	}
+
+	& > li {
+		padding-inline: var(--containerPadding-main)
+			var(--containerPadding-page);
+	}
+
+	.submenu {
+		overflow: hidden;
+
+		height: max-content;
+		padding: 0;
+		margin-left: var(--containerPadding-fieldset);
+
+		transition: none ease 0.4s;
+		transition-property: height;
+
+		:root.jsDisabled & {
+			height: max-content !important;
+		}
+	}
+}
+
+@media (any-pointer: fine) {
+	.sideMenu {
+		[role='menuitem'] {
+			& + .icon {
+				@include icon();
+
+				display: inline-block;
+
+				font-family: 'material icons outlined';
+				font-size: var(--md-medium);
+
+				transform: rotate(90deg);
+
+				transition: none ease 0.2s;
+				transition-property: transform;
+			}
+		}
+
+		.submenu {
+			height: 0;
+		}
+	}
+
+	li:hover > .submenu,
+	[role='menuitem'][aria-expanded='true'] + .icon + .submenu {
+		// height: auto;
+		// height: revert !important;
+		// --var: 5rem;
+		height: var(--height, max-content);
+	}
+
+	li:hover > [role='menuitem'] + .icon,
+	[role='menuitem'][aria-expanded='true'] + .icon {
+		transform: rotate(0deg);
 	}
 }

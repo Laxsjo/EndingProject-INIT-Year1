@@ -288,6 +288,22 @@ export class Submenu extends NestedMenu {
 		this.parent = parent;
 		this.parentIndex = index;
 
+		let getHeight = () => {
+			let rect = this.container.getBoundingClientRect();
+			console.log(rect.height);
+			this.container.style.setProperty(
+				'--height',
+				this.container.scrollHeight + 'px'
+			);
+		};
+
+		window.addEventListener('load', (event) => {
+			getHeight();
+		});
+		if (document.readyState === 'complete') {
+			getHeight();
+		}
+
 		// this.container.addEventListener('focusin', (event) => {
 		// 	this.#handleFocusIn(event);
 		// });

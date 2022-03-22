@@ -38,7 +38,8 @@ export class Menu {
 		}
 
 		this.container.addEventListener('keydown', (event) => {
-			this.#handleKeyDown(event);
+			// console.log('keydown in Menu');
+			this.handleKeyDown(event);
 		});
 
 		console.log('Created Menu with items', this.items);
@@ -48,12 +49,24 @@ export class Menu {
 	 * @param {number} index
 	 */
 	selectItem(index) {
-		if (index >= this.items.length) {
-			throw new Error(
-				`Failed to select item: An item with index ${index} does not exist.`
-			);
+		// if (index >= this.items.length) {
+		// 	throw new Error(
+		// 		`Failed to select item: An item with index ${index} does not exist.`
+		// 	);
+		// }
+
+		if (index < 0) {
+			index = this.items.length - 1;
+		} else if (index >= this.items.length) {
+			index = 0;
 		}
 
+		// console.trace(
+		// 	'set selected index to',
+		// 	index,
+		// 	'from',
+		// 	this.selectedIndex
+		// );
 		this.selectedIndex = index;
 
 		for (const item of this.items) {
@@ -63,6 +76,8 @@ export class Menu {
 		let item = this.items[index];
 		item.tabIndex = 0;
 		item.focus();
+
+		// console.log('selected item', item, 'with index', index);
 	}
 
 	/**
@@ -70,20 +85,28 @@ export class Menu {
 	 */
 	selectNextItem(direction) {
 		let index = this.selectedIndex + direction;
-
-		if (index < 0) {
-			index = this.items.length - 1;
-		} else if (index >= this.items.length) {
-			index = 0;
-		}
-
+		// console.log(
+		// 	'selected next index',
+		// 	index,
+		// 	'in direction',
+		// 	direction,
+		// 	'length',
+		// 	this.items.length,
+		// 	'inside Menu'
+		// );
 		this.selectItem(index);
 	}
 
 	/**
 	 * @param {KeyboardEvent} event
 	 */
-	#handleKeyDown(event) {
+	handleKeyDown(event) {
+		// console.log(
+		// 	'handled key down',
+		// 	event.key,
+		// 	'in Menu',
+		// 	event.currentTarget
+		// );
 		let foundKey = false;
 		switch (event.key) {
 			case 'ArrowLeft':
@@ -110,12 +133,13 @@ export class Menu {
 
 		if (foundKey) {
 			event.preventDefault();
+			event.stopPropagation();
 		}
 	}
 }
 
 export class NestedMenu extends Menu {
-	/** @type {{[index: number]: Submenu}} */
+	/** @type {Submenu[]} */
 	submenus;
 
 	/**
@@ -124,6 +148,31 @@ export class NestedMenu extends Menu {
 	 */
 	constructor(containerElement) {
 		super(containerElement);
+
+		this.container.addEventListener('focusout', (event) => {
+			// console.log(
+			// 	'target',
+			// 	event.relatedTarget,
+			// 	'is contained',
+			// 	this.container.contains(event.relatedTarget)
+			// );
+			if (!this.container.contains(event.relatedTarget)) {
+				for (const submenu of this.submenus) {
+					if (submenu !== undefined) {
+						submenu.closeSubmenu();
+					}
+				}
+				if (this.parent === undefined) {
+					// console.log(
+					// 	'set tabindex to',
+					// 	0,
+					// 	'for item',
+					// 	this.items[this.selectedIndex]
+					// );
+					this.items[this.selectedIndex].tabIndex = 0;
+				}
+			}
+		});
 
 		this.submenus = [];
 
@@ -138,37 +187,36 @@ export class NestedMenu extends Menu {
 				item.setAttribute('aria-haspopup', 'true');
 				item.setAttribute('aria-expanded', 'false');
 
-				console.log('found item', item, 'with submenu');
+				// console.log('found item', item, 'with submenu');
 
 				item.addEventListener('keydown', (event) => {
+					// console.log('keydown in Submenu opener');
 					switch (event.key) {
 						case ' ':
 							this.openSubmenu(index);
 							event.preventDefault();
+							event.stopPropagation();
 							break;
 						default:
 							break;
 					}
 				});
-				item.addEventListener('blur', (event) => {
-					let focusDestination = event.relatedTarget;
+				// item.addEventListener('blur', (event) => {
+				// 	let focusDestination = event.relatedTarget;
 
-					let allItems = this.submenus[index].items;
+				// 	let allItems = this.submenus[index].items;
 
-					// console.log(
-					// 	'related target',
-					// 	event.relatedTarget,
-					// 	'is included',
-					// 	allItems.includes(focusDestination)
-					// );
+				// 	// console.log(
+				// 	// 	'related target',
+				// 	// 	event.relatedTarget,
+				// 	// 	'is included',
+				// 	// 	allItems.includes(focusDestination)
+				// 	// );
 
-					if (!allItems.includes(focusDestination)) {
-						item.setAttribute('aria-expanded', 'false');
-					}
-					// for (const item of this.submenus[index].items) {
-					// 	item.tabIndex = -1;
-					// }
-				});
+				// 	if (!allItems.includes(focusDestination)) {
+				// 		item.setAttribute('aria-expanded', 'false');
+				// 	}
+				// });
 			}
 		}
 	}
@@ -184,42 +232,42 @@ export class NestedMenu extends Menu {
 			this.items[index].setAttribute('aria-expanded', 'true');
 			// console.log('opened submenu', index);
 			let submenu = this.submenus[index];
-			submenu.selectItem(0);
+			submenu.selectItem(submenu.selectedIndex);
 		}
 	}
 
-	/**
-	 * @param {KeyboardEvent} event
-	 */
-	handleKeyDown(event) {
-		let foundKey = false;
-		switch (event.key) {
-			case 'ArrowLeft':
-			case 'ArrowUp':
-				foundKey = true;
-				this.selectNextItem(-1);
-				break;
-			case 'ArrowRight':
-			case 'ArrowDown':
-				foundKey = true;
-				this.selectNextItem(1);
-				break;
-			case 'Home':
-				foundKey = true;
-				this.selectItem(0);
-				break;
-			case 'End':
-				foundKey = true;
-				this.selectItem(this.items.length - 1);
-				break;
-			default:
-				break;
-		}
+	// /**
+	//  * @param {KeyboardEvent} event
+	//  */
+	// handleKeyDown(event) {
+	// 	let foundKey = false;
+	// 	switch (event.key) {
+	// 		case 'ArrowLeft':
+	// 		case 'ArrowUp':
+	// 			foundKey = true;
+	// 			this.selectNextItem(-1);
+	// 			break;
+	// 		case 'ArrowRight':
+	// 		case 'ArrowDown':
+	// 			foundKey = true;
+	// 			this.selectNextItem(1);
+	// 			break;
+	// 		case 'Home':
+	// 			foundKey = true;
+	// 			this.selectItem(0);
+	// 			break;
+	// 		case 'End':
+	// 			foundKey = true;
+	// 			this.selectItem(this.items.length - 1);
+	// 			break;
+	// 		default:
+	// 			break;
+	// 	}
 
-		if (foundKey) {
-			event.preventDefault();
-		}
-	}
+	// 	if (foundKey) {
+	// 		event.preventDefault();
+	// 	}
+	// }
 }
 
 export class Submenu extends NestedMenu {
@@ -240,26 +288,42 @@ export class Submenu extends NestedMenu {
 		this.parent = parent;
 		this.parentIndex = index;
 
-		this.container.addEventListener('focusin', (event) => {
-			this.#handleFocusIn(event);
-		});
+		// this.container.addEventListener('focusin', (event) => {
+		// 	this.#handleFocusIn(event);
+		// });
 	}
 
 	/**
 	 * @param {-1|1} direction The direction to exit in.
 	 */
 	exitSubmenu(direction) {
-		let index = (this.parentIndex += direction === 1 ? 1 : 0);
+		console.log(
+			'exited submenu in direction',
+			direction,
+			'parent index',
+			this.parentIndex,
+			'parent items',
+			this.parent.items,
+			'parent',
+			this.parent.items[this.parentIndex]
+		);
+		let index = this.parentIndex + (direction === 1 ? 1 : 0);
 
 		// this.container.classList.remove("expanded");
 		for (const item of this.items) {
 			item.tabIndex = -1;
 		}
+
+		this.parent.selectItem(index);
+
+		this.closeSubmenu();
+	}
+
+	closeSubmenu() {
 		this.parent.items[this.parentIndex].setAttribute(
 			'aria-expanded',
 			'false'
 		);
-		this.parent.selectItem(index);
 	}
 
 	/**
@@ -267,35 +331,46 @@ export class Submenu extends NestedMenu {
 	 */
 	selectNextItem(direction) {
 		let index = this.selectedIndex + direction;
-		console.log('selected index', index, 'length', this.items.length);
+		// console.log(
+		// 	'selected index',
+		// 	index,
+		// 	'in direction',
+		// 	direction,
+		// 	'previous index',
+		// 	this.selectedIndex,
+		// 	'length',
+		// 	this.items.length,
+		// 	'inside Submenu'
+		// );
 
 		if (index < 0) {
 			this.exitSubmenu(-1);
-			return;
 		} else if (index >= this.items.length) {
 			this.exitSubmenu(1);
-			return;
+		} else {
+			super.selectNextItem(direction);
 		}
-		super.selectNextItem(direction);
 	}
 
-	/**
-	 * @type {FocusEvent} event
-	 */
-	#handleFocusIn(event) {
-		this.selectItem(0);
-	}
+	// /**
+	//  * @type {FocusEvent} event
+	//  */
+	// #handleFocusIn(event) {
+	// 	this.selectItem(0);
+	// }
 
 	/**
 	 * @param {KeyboardEvent} event
 	 */
 	handleKeyDown(event) {
+		// console.trace('handled key down in Submenu', event.currentTarget);
 		super.handleKeyDown(event);
 
 		switch (event.key) {
-			case Esc:
+			case 'Esc':
 				this.exitSubmenu(-1);
 				event.preventDefault();
+				event.stopPropagation();
 				break;
 		}
 	}

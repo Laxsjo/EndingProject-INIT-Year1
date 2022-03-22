@@ -2,6 +2,7 @@
 	// [role='menuitem']:not([aria-expanded='true']) {
 	// 	background-color: lightcoral;
 	// }
+	list-style-type: none;
 	[role='menuitem']:not([aria-expanded='true']) + .submenu {
 		// background-color: lightcoral;
 		display: none;

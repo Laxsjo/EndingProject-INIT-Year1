@@ -9,14 +9,16 @@ for (const element of menuElements) {
 	const widget = new Widgets.NestedMenu(element);
 }
 
-/** @type {HTMLElement} */
+/** @type {?HTMLElement} */
 const scrollDetector = document.querySelector('#scrollAnchor');
-const scrollObserver = new IntersectionObserver((entries) => {
-	let entry = entries[0];
-	document.documentElement.classList.toggle(
-		'scrolling',
-		!entry.isIntersecting
-	);
-});
+if (scrollDetector) {
+	const scrollObserver = new IntersectionObserver((entries) => {
+		let entry = entries[0];
+		document.documentElement.classList.toggle(
+			'scrolling',
+			!entry.isIntersecting
+		);
+	});
 
-scrollObserver.observe(scrollDetector);
+	scrollObserver.observe(scrollDetector);
+}

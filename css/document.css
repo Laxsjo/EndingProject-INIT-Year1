@@ -25,7 +25,6 @@ header {
   transition-property: background-color;
 }
 header .logo {
-  --width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
   position: absolute;
   top: 0.9rem;
   transition: none ease-out;
@@ -154,24 +153,40 @@ main.leftNavMenu > :nth-child(2) {
   margin-top: var(--gapSection2);
 }
 
-.logo a {
+footer {
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  text-decoration: none;
+  gap: var(--gapSection1);
+  justify-content: center;
+  background: var(--headerSecondaryBackground1);
 }
-.logo a img {
-  filter: invert(1);
-  width: calc(var(--width) * var(--goldenRatio) / (1 + var(--goldenRatio)));
-  height: auto;
+footer .info {
+  display: flex;
+  flex-flow: column nowrap;
 }
-.logo a .name {
-  --factor: 0.281690140845;
-  font-size: calc(var(--width) / (1 + var(--goldenRatio)) * var(--factor));
-  font-family: "EB Garamond", "Times New Roman", serif;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--titleTextColor);
+footer .info ul {
+  padding: 0;
+  margin: 0;
+}
+footer .info ul li {
+  margin: 0;
+}
+footer .info .login::marker,
+footer .info .place::marker,
+footer .info .contact::marker {
+  font-family: "Material Icons Outlined";
+  font-size: var(--md-small);
+  vertical-align: middle;
+}
+footer .info .login::marker {
+  content: "login";
+}
+footer .info .place::marker {
+  content: "place";
+}
+footer .info .contact::marker {
+  content: "mail";
+}
+footer .logo {
+  --logoWidth: 30vw;
 }/*# sourceMappingURL=document.css.map */

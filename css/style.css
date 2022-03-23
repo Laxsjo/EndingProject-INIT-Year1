@@ -196,4 +196,29 @@ a.documentLink.fancyLink {
 
 .blackLineArt {
   filter: invert(100%);
+}
+
+.logo {
+  --width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
+}
+.logo a {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  text-decoration: none;
+}
+.logo a img {
+  filter: invert(1);
+  width: calc(var(--width) * var(--goldenRatio) / (1 + var(--goldenRatio)));
+  height: auto;
+}
+.logo a .name {
+  --factor: 0.281690140845;
+  font-size: calc(var(--width) / (1 + var(--goldenRatio)) * var(--factor));
+  font-family: "EB Garamond", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--titleTextColor);
 }/*# sourceMappingURL=style.css.map */

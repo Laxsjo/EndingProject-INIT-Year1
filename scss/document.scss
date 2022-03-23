@@ -36,8 +36,6 @@ header {
 	transition-property: background-color;
 
 	.logo {
-		--width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
-
 		position: absolute;
 		top: 0.9rem;
 
@@ -189,40 +187,50 @@ main {
 	}
 }
 
-.logo {
-	a {
+footer {
+	display: flex;
+	flex-flow: row nowrap;
+	gap: var(--gapSection1);
+	justify-content: center;
+
+	background: var(--headerSecondaryBackground1);
+
+	.info {
 		display: flex;
-		flex-flow: row nowrap;
-		align-items: center;
-		gap: 0.5rem;
+		flex-flow: column nowrap;
 
-		// top: 0;
+		ul {
+			// list-style-type: none;
 
-		padding: 0.5rem;
-		// margin-top: 1rem;
+			padding: 0;
+			margin: 0;
 
-		text-decoration: none;
-
-		img {
-			filter: invert(1);
-
-			width: calc(
-				(var(--width) * var(--goldenRatio)) / (1 + var(--goldenRatio))
-			);
-			height: auto;
-			// aspect-ratio: 3 / 5;
+			li {
+				margin: 0;
+			}
 		}
-		.name {
-			--factor: 0.281690140845; // Magic constant that you multiply with your desired width, which gives you the appropriate font size to set.
 
-			font-size: calc(
-				(var(--width) / (1 + var(--goldenRatio))) * var(--factor)
-			);
-			font-family: 'EB Garamond', 'Times New Roman', serif;
-			font-style: italic;
-			font-weight: 400;
-
-			color: var(--titleTextColor);
+		.login,
+		.place,
+		.contact {
+			&::marker {
+				font-family: 'Material Icons Outlined';
+				font-size: var(--md-small);
+				vertical-align: middle;
+			}
 		}
+
+		.login::marker {
+			content: 'login';
+		}
+		.place::marker {
+			content: 'place';
+		}
+		.contact::marker {
+			content: 'mail';
+		}
+	}
+	.logo {
+		--logoWidth: 30vw;
 	}
 }

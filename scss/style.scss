@@ -230,3 +230,43 @@ a.documentLink.fancyLink {
 .blackLineArt {
 	filter: invert(100%);
 }
+
+.logo {
+	--width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
+
+	a {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		gap: 0.5rem;
+
+		// top: 0;
+
+		padding: 0.5rem;
+		// margin-top: 1rem;
+
+		text-decoration: none;
+
+		img {
+			filter: invert(1);
+
+			width: calc(
+				(var(--width) * var(--goldenRatio)) / (1 + var(--goldenRatio))
+			);
+			height: auto;
+			// aspect-ratio: 3 / 5;
+		}
+		.name {
+			--factor: 0.281690140845; // Magic constant that you multiply with your desired width, which gives you the appropriate font size to set.
+
+			font-size: calc(
+				(var(--width) / (1 + var(--goldenRatio))) * var(--factor)
+			);
+			font-family: 'EB Garamond', 'Times New Roman', serif;
+			font-style: italic;
+			font-weight: 400;
+
+			color: var(--titleTextColor);
+		}
+	}
+}

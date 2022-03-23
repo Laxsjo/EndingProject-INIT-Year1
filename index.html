@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="sv" class="jsDisabled">
 	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<title>Förstasida | Stiftelsen Barnarve</title>
+		<title>Stiftelsen Barnarve</title>
 		<meta
 			name="description"
 			content="En introduktion till Stiftelsen Barnarve och den öppna delen av dens hemsida."
 		/>
+
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link
 			rel="icon"
@@ -24,8 +24,10 @@
 
 		<link rel="stylesheet" href="/EndingProject-INIT-Year1/css/style.css" />
 
+		<script src="/EndingProject-INIT-Year1/js/jsCheck.js"></script>
 		<script
 			type="module"
+			defer
 			src="/EndingProject-INIT-Year1/js/main.js"
 		></script>
 
@@ -78,49 +80,59 @@
 					role="menubar"
 					aria-orientation="horizontal"
 				>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
 							aria-current="page"
 							href="/EndingProject-INIT-Year1/"
 						>
-							Hem
+							<span>Hem</span>
 						</a>
 					</li>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
 							href="/EndingProject-INIT-Year1/barnarve/"
-							>Barnarve</a
 						>
+							<span class="icon">home</span>
+							<span>Barnarve</span>
+						</a>
 					</li>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/foundation.html"
-							>Stiftelsen</a
+							href="/EndingProject-INIT-Year1/foundation"
 						>
+							<span class="icon">group</span>
+							<span>Stiftelsen</span>
+						</a>
 					</li>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/family.html"
-							>Släkten</a
+							href="/EndingProject-INIT-Year1/family"
 						>
+							<span class="icon">family_restroom</span>
+							<span>Släkten</span>
+						</a>
 					</li>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/rent.html"
-							>Hyra hos oss</a
+							href="/EndingProject-INIT-Year1/rent"
 						>
+							<span class="icon">date_range</span>
+							<span>Hyra hos oss</span>
+						</a>
 					</li>
-					<li>
+					<li role="none">
 						<a
 							role="menuitem"
-							href="/EndingProject-INIT-Year1/login.html"
-							>Logga in</a
+							href="/EndingProject-INIT-Year1/login"
 						>
+							<span class="icon">login</span>
+							<span>Logga in</span>
+						</a>
 					</li>
 				</ul>
 			</nav>
@@ -189,5 +201,46 @@
 				så ska jag försöka rätta till det. /Rasmus
 			</p>
 		</main>
+		<footer>
+			<div class="info">
+				<address>
+					<ul>
+						<li class="place">Hemängsstigen 1A, 623 65 Ljugarn</li>
+						<li class="contact">
+							<a
+								class="fancyLink"
+								href="mailto:rasmus.soderhielm@gmail.com"
+							>
+								Kontakta oss
+							</a>
+						</li>
+					</ul>
+				</address>
+				<ul>
+					<li class="login">
+						<a
+							class="fancyLink"
+							href="/EndingProject-INIT-Year1/login"
+						>
+							Logga in
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="logo">
+				<a href="/EndingProject-INIT-Year1/">
+					<img
+						src="/EndingProject-INIT-Year1/img/logo.svg"
+						alt="Stiften Barnarves Logga. Den visar ett barn som rider på en örn."
+						width="290"
+						height="180"
+					/>
+					<div class="name">
+						Stiftelsen<br />
+						Barnarve
+					</div>
+				</a>
+			</div>
+		</footer>
 	</body>
 </html>

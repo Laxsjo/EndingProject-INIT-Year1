@@ -1,8 +1,6 @@
 document.documentElement.classList.remove('jsDisabled');
 
-document.addEventListener('DOMContentLoaded', (event) => {
-	console.log('DOMContentLoaded');
-});
-window.addEventListener('load', (event) => {
-	console.log('load');
-});
+document.documentElement.classList.add('noAnim');
+setTimeout(() => {
+	document.documentElement.classList.remove('noAnim');
+}, 500);

@@ -11,15 +11,25 @@
 
 	margin: 0;
 	padding: 0;
+	min-height: 100vh;
+
+	&.noAnim {
+		* {
+			animation-duration: 0s !important;
+			transition-duration: 0s !important;
+		}
+	}
 }
 
 body {
 	margin: 0;
-	padding: 0;
+	padding: 0.01px;
 
 	font-family: 'Noto Sans Display', Arial, sans-serif;
 
 	color: var(--textColor);
+
+	min-height: 100vh;
 }
 
 h1,
@@ -32,6 +42,7 @@ h6 {
 }
 
 p {
+	margin-block: var(--gapPair);
 	max-width: var(--paragraphWidth-medium);
 }
 
@@ -67,7 +78,7 @@ p {
 		100% 100%/0% 2px no-repeat;
 	transition: background-size 0.2s;
 }
-a[target='_blank']::after {
+.fancyLink[target='_blank']::after {
 	content: 'open_in_new';
 	font-size: 0.9em;
 	font-family: 'Material Icons Outlined';
@@ -178,16 +189,18 @@ a.documentLink.fancyLink {
 }
 
 .withAsideColumn {
-	display: grid;
-	grid-template:
-		'. aside' auto
-		/ 1fr auto;
-	grid-auto-flow: row;
+	// display: grid;
+	// grid-template:
+	// 	'. aside' auto
+	// 	/ 1fr auto;
+	// grid-auto-flow: row;
+	display: flex;
+	flex-flow: row wrap;
 	gap: var(--gapSection1);
 
-	.aside {
-		grid-area: aside;
-	}
+	// .aside {
+	// 	grid-area: aside;
+	// }
 }
 
 .scrollDetector {
@@ -197,6 +210,8 @@ a.documentLink.fancyLink {
 
 .fancyFigure {
 	width: min-content;
+	margin: 0;
+	margin-block: var(--gapPair);
 
 	.figBorder {
 		overflow: hidden;
@@ -232,7 +247,7 @@ a.documentLink.fancyLink {
 }
 
 .logo {
-	--width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
+	--partWidth: calc(var(--width) - 0.5rem - 0.5rem * 2);
 
 	a {
 		display: flex;
@@ -248,20 +263,23 @@ a.documentLink.fancyLink {
 		text-decoration: none;
 
 		img {
+			--subwidth: calc(
+				(var(--partWidth) * var(--goldenRatio)) /
+					(1 + var(--goldenRatio))
+			);
+
 			filter: invert(1);
 
-			width: calc(
-				(var(--width) * var(--goldenRatio)) / (1 + var(--goldenRatio))
-			);
+			width: var(--subwidth);
 			height: auto;
+			aspect-ratio: 29 / 18;
 			// aspect-ratio: 3 / 5;
 		}
 		.name {
 			--factor: 0.281690140845; // Magic constant that you multiply with your desired width, which gives you the appropriate font size to set.
+			--subwidth: calc(var(--partWidth) / (1 + var(--goldenRatio)));
 
-			font-size: calc(
-				(var(--width) / (1 + var(--goldenRatio))) * var(--factor)
-			);
+			font-size: calc(var(--subwidth) * var(--factor));
 			font-family: 'EB Garamond', 'Times New Roman', serif;
 			font-style: italic;
 			font-weight: 400;

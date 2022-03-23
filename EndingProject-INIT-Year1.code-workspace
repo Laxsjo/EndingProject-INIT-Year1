@@ -17,6 +17,7 @@
 		"files.exclude": {
 			"javascript/**": true,
 			"local.barnarve/**": true
-		}
+		},
+		"liveServer.settings.multiRootWorkspaceName": "root"
 	}
 }

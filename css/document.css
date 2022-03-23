@@ -1,52 +1,89 @@
 body {
+  display: grid;
+  grid-template: 0 min-content 1fr min-content/1fr;
+  grid-auto-flow: column;
+  position: relative;
   background: var(--contentBackdropBackground1);
+}
+body::before {
+  content: "";
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--contentBackdropBackground2);
+  mask-image: url("/EndingProject-INIT-Year1/img/backgroundPattern.svg");
 }
 
 .coverImage {
   display: block;
+  position: relative;
+  z-index: 4;
   width: 100%;
   height: 25rem;
   object-fit: cover;
   object-position: center;
+  box-shadow: 0 0 1rem var(--shadowColor);
 }
 
+@keyframes logoEnlarge {
+  0% {
+    transform: translateY(calc(var(--containerPadding-fieldset) * -1)) scale(0.75);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes logoShrink {
+  0% {
+    transform: translateY(var(--containerPadding-fieldset)) scale(1.3333333333);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes menuEnlarge {
+  0% {
+    transform: translateX(-5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes menuShrink {
+  0% {
+    transform: translateX(5rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 header {
-  --logoWidth: 20rem;
+  --shortDuration: 0.2s;
+  --duration: 0.3s;
+  --width: 20rem;
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
+  gap: var(--gapPair);
   position: fixed;
   top: 0;
-  z-index: 2;
-  width: 100vw;
-  padding: 0.9rem 0.9rem;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: var(--containerPadding-fieldset);
   background-color: transparent;
-  transition: none ease-out 0.15s;
-  transition-property: background-color;
+  transition: none linear var(--shortDuration);
 }
 header .logo {
-  position: absolute;
-  top: 0.9rem;
-  transition: none ease-out;
-  transition-property: top;
-}
-header .logo a {
-  transition: inherit;
-}
-header .logo a img {
-  aspect-ratio: 29/18;
-  transition: inherit;
-  transition-property: width;
-}
-header .logo a .name {
-  transition: inherit;
-  transition-property: font-size;
+  transform-origin: top left;
 }
 header .menu {
-  margin-left: calc(var(--logoWidth) + 1.6rem);
   padding: 0.5rem 1rem;
-  transition: none ease-out;
-  transition-property: margin-left;
 }
 header .menu > ul {
   display: flex;
@@ -58,6 +95,7 @@ header .menu > ul {
 }
 header .menu > ul li {
   margin: 0;
+  white-space: nowrap;
   list-style-type: none;
 }
 header .menu > ul li a {
@@ -106,29 +144,43 @@ header .menu {
   border: 2px solid var(--menuBorder1);
   border-radius: 0.4rem;
   background: var(--menuBackground1);
-  transition-timing-function: ease;
-  transition-duration: 0.3s;
+  transition: none linear var(--shortDuration);
+}
+:root:not(.scrolling) header .logo,
+:root:not(.scrolling) header .menu {
+  transition-property: background-color, border-color;
+}
+:root:not(.scrolling) header .logo {
+  animation: logoEnlarge ease var(--duration);
+}
+:root:not(.scrolling) header .menu {
+  animation: menuEnlarge ease var(--duration);
 }
 :root.scrolling header {
-  --logoWidth: 11rem;
-  padding-block: 0.9rem;
+  --width: 15rem;
   background-color: var(--menuBackground1);
+  box-shadow: 0 0 1rem var(--shadowColor);
+  transition-property: background-color;
 }
 :root.scrolling header .logo,
 :root.scrolling header .menu {
   border: none;
+  border-color: transparent;
   background: none;
 }
 :root.scrolling header .logo {
   top: 0;
+  margin-block: calc(var(--containerPadding-fieldset) * -1);
+  animation: logoShrink ease var(--duration);
 }
 :root.scrolling header .menu {
   padding-block: calc(0.5rem + 2px);
+  animation: menuShrink ease var(--duration);
 }
 
 main {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   min-width: min-content;
   width: max-content;
   max-width: 100%;
@@ -136,6 +188,7 @@ main {
   padding-block: var(--gapSection2);
   padding-inline: var(--containerPadding-main);
   background: var(--contentBackground2);
+  box-shadow: 0 0 1rem var(--shadowColor);
 }
 main h1 {
   margin-top: 0;
@@ -158,35 +211,51 @@ footer {
   flex-flow: row nowrap;
   gap: var(--gapSection1);
   justify-content: center;
+  position: relative;
+  z-index: 3;
+  padding: var(--containerPadding-medium);
   background: var(--headerSecondaryBackground1);
+  box-shadow: 0 0 3rem var(--shadowColor);
 }
 footer .info {
-  display: flex;
-  flex-flow: column nowrap;
+  padding-block: var(--gapPair);
+}
+footer .info address {
+  font-style: normal;
 }
 footer .info ul {
   padding: 0;
   margin: 0;
 }
 footer .info ul li {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: var(--gapWithinSubPair);
   margin: 0;
 }
-footer .info .login::marker,
-footer .info .place::marker,
-footer .info .contact::marker {
+footer .info,
+footer .info ul {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--gapWithinPair);
+}
+footer .info .login::before,
+footer .info .place::before,
+footer .info .contact::before {
   font-family: "Material Icons Outlined";
   font-size: var(--md-small);
-  vertical-align: middle;
+  color: var(--textGrayColor);
 }
-footer .info .login::marker {
+footer .info .login::before {
   content: "login";
 }
-footer .info .place::marker {
+footer .info .place::before {
   content: "place";
 }
-footer .info .contact::marker {
+footer .info .contact::before {
   content: "mail";
 }
 footer .logo {
-  --logoWidth: 30vw;
+  --width: max(30vw, 16rem);
 }/*# sourceMappingURL=document.css.map */

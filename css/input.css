@@ -92,6 +92,7 @@
   border: 0 solid var(--menuBorder1);
   border-right-width: 2px;
   border-bottom-width: 2px;
+  border-bottom-right-radius: 5px;
 }
 .sideMenu ul {
   list-style-type: none;
@@ -137,6 +138,12 @@
 .sideMenu > li {
   padding-inline: var(--containerPadding-main) var(--containerPadding-page);
 }
+.sideMenu li {
+  margin-bottom: var(--gapWithinSubPair);
+}
+.sideMenu li:last-child {
+  margin-bottom: 0;
+}
 .sideMenu .submenu {
   overflow: hidden;
   height: max-content;
@@ -178,9 +185,16 @@
     display: inline-block;
     font-family: "material icons outlined";
     font-size: var(--md-medium);
+    color: var(--mdColor1);
     transform: rotate(90deg);
     transition: none ease 0.2s;
     transition-property: transform;
+  }
+  .sideMenu [role=menuitem].alwaysOpen + .icon {
+    transform: rotate(0) !important;
+  }
+  .sideMenu [role=menuitem].alwaysOpen + .icon + .submenu {
+    height: max-content !important;
   }
   .sideMenu .submenu {
     height: 0;

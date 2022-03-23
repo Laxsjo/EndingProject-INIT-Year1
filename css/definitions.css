@@ -9,9 +9,9 @@
   --containerPadding-fieldset: 1rem;
   --containerPadding-medium: 0.6rem;
   --containerPadding-small: 0.4rem;
-  --paragraphWidth-thin: 5ch + 10vw;
-  --paragraphWidth-medium: 9ch + 17.5vw;
-  --paragraphWidth-wide: 15ch + 30vw;
+  --paragraphWidth-thin: calc(5ch + 10vw);
+  --paragraphWidth-medium: calc(9ch + 17.5vw);
+  --paragraphWidth-wide: calc(15ch + 30vw);
   --paragraphMinWidth-thin: 30ch;
   --paragraphMinWidth-medium: 40ch;
   --paragraphMinWidth-wide: 50ch;

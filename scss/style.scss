@@ -31,6 +31,20 @@ h6 {
 	color: var(--titleTextColor);
 }
 
+p {
+	max-width: var(--paragraphWidth-medium);
+}
+
+.paragraph-thin {
+	max-width: var(--paragraphMinWidth-thin);
+}
+.paragraph-medium {
+	max-width: var(--paragraphMinWidth-medium);
+}
+.paragraph-wide {
+	max-width: var(--paragraphMinWidth-wide);
+}
+
 :focus-visible {
 	outline: 2px dotted var(--focusColor1);
 	position: relative;
@@ -163,7 +177,56 @@ a.documentLink.fancyLink {
 	}
 }
 
+.withAsideColumn {
+	display: grid;
+	grid-template:
+		'. aside' auto
+		/ 1fr auto;
+	grid-auto-flow: row;
+	gap: var(--gapSection1);
+
+	.aside {
+		grid-area: aside;
+	}
+}
+
 .scrollDetector {
 	width: 100%;
 	height: 0;
+}
+
+.fancyFigure {
+	width: min-content;
+
+	.figBorder {
+		overflow: hidden;
+
+		width: max-content;
+
+		border: 2px solid var(--contentBorder1);
+		border-radius: 6px;
+
+		background: var(--contentBackground1);
+	}
+
+	figcaption {
+		max-width: 100%;
+		margin-top: var(--gapWithinPair);
+
+		font-size: 0.9em;
+		text-align: center;
+
+		color: var(--textGrayColor);
+	}
+
+	&.left {
+		float: left;
+	}
+	&.right {
+		float: right;
+	}
+}
+
+.blackLineArt {
+	filter: invert(100%);
 }

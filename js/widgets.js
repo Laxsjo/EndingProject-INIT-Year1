@@ -183,7 +183,12 @@ export class NestedMenu extends Menu {
 
 			let index = Number(item.dataset.index ?? -1);
 			if (submenuElement !== null && index !== -1) {
-				this.submenus[index] = new Submenu(submenuElement, this, index);
+				this.submenus[index] = new Submenu(
+					submenuElement,
+					this,
+					index,
+					item.classList.contains('alwaysOpen')
+				);
 				item.setAttribute('aria-haspopup', 'true');
 				item.setAttribute('aria-expanded', 'false');
 
@@ -222,9 +227,33 @@ export class NestedMenu extends Menu {
 	}
 
 	/**
-	 * @param {number} index
+	 * @param {-1|1} direction
 	 */
-	openSubmenu(index) {
+	selectNextItem(direction) {
+		let index = this.selectedIndex + direction;
+
+		if (
+			this.submenus[this.selectedIndex] &&
+			this.submenus[this.selectedIndex].alwaysOpen &&
+			direction === 1
+		) {
+			this.openSubmenu(this.selectedIndex, 0);
+		} else if (
+			this.submenus[index] &&
+			this.submenus[index].alwaysOpen &&
+			direction === -1
+		) {
+			this.openSubmenu(index, this.submenus[index].items.length - 1);
+		} else {
+			this.selectItem(index);
+		}
+	}
+
+	/**
+	 * @param {number} index
+	 * @param {number} submenuIndex
+	 */
+	openSubmenu(index, submenuIndex = -1) {
 		if (this.submenus[index] !== undefined) {
 			for (const item of this.items) {
 				item.tabIndex = -1;
@@ -232,42 +261,11 @@ export class NestedMenu extends Menu {
 			this.items[index].setAttribute('aria-expanded', 'true');
 			// console.log('opened submenu', index);
 			let submenu = this.submenus[index];
-			submenu.selectItem(submenu.selectedIndex);
+			submenu.selectItem(
+				submenuIndex === -1 ? submenu.selectedIndex : submenuIndex
+			);
 		}
 	}
-
-	// /**
-	//  * @param {KeyboardEvent} event
-	//  */
-	// handleKeyDown(event) {
-	// 	let foundKey = false;
-	// 	switch (event.key) {
-	// 		case 'ArrowLeft':
-	// 		case 'ArrowUp':
-	// 			foundKey = true;
-	// 			this.selectNextItem(-1);
-	// 			break;
-	// 		case 'ArrowRight':
-	// 		case 'ArrowDown':
-	// 			foundKey = true;
-	// 			this.selectNextItem(1);
-	// 			break;
-	// 		case 'Home':
-	// 			foundKey = true;
-	// 			this.selectItem(0);
-	// 			break;
-	// 		case 'End':
-	// 			foundKey = true;
-	// 			this.selectItem(this.items.length - 1);
-	// 			break;
-	// 		default:
-	// 			break;
-	// 	}
-
-	// 	if (foundKey) {
-	// 		event.preventDefault();
-	// 	}
-	// }
 }
 
 export class Submenu extends NestedMenu {
@@ -275,18 +273,22 @@ export class Submenu extends NestedMenu {
 	parent;
 	/** @type {number} */
 	parentIndex;
+	/** @type {boolean} */
+	alwaysOpen;
 
 	/**
 	 *
 	 * @param {HTMLElement} containerElement
 	 * @param {NestedMenu} parent
 	 * @param {number} index
+	 * @param {boolean} alwaysOpen
 	 */
-	constructor(containerElement, parent, index) {
+	constructor(containerElement, parent, index, alwaysOpen) {
 		super(containerElement);
 
 		this.parent = parent;
 		this.parentIndex = index;
+		this.alwaysOpen = alwaysOpen;
 
 		let getHeight = () => {
 			let rect = this.container.getBoundingClientRect();

@@ -28,7 +28,7 @@ header {
 	z-index: 2;
 
 	width: 100vw;
-	padding: 1rem 1rem;
+	padding: 0.9rem 0.9rem;
 
 	background-color: transparent;
 
@@ -39,12 +39,16 @@ header {
 		--width: calc(var(--logoWidth) - 0.5rem - 0.5rem * 2);
 
 		position: absolute;
+		top: 0.9rem;
 
 		transition: none ease-out;
+		transition-property: top;
 		a {
 			transition: inherit;
 
 			img {
+				aspect-ratio: 29 / 18;
+
 				transition: inherit;
 				transition-property: width;
 			}
@@ -123,9 +127,9 @@ header {
 	}
 
 	:root.scrolling & {
-		--logoWidth: 12rem;
+		--logoWidth: 11rem;
 
-		padding-block: 1.5rem;
+		padding-block: 0.9rem;
 
 		background-color: var(--menuBackground1);
 
@@ -139,6 +143,10 @@ header {
 			top: 0;
 		}
 
+		.menu {
+			padding-block: calc(0.5rem + 2px);
+		}
+
 		// .logo {
 		// 	--width: 12rem;
 		// }
@@ -150,7 +158,8 @@ main {
 	z-index: 1;
 
 	min-width: min-content;
-	width: 50vw;
+	width: max-content;
+	max-width: 100%;
 	margin-inline: auto;
 	padding-block: var(--gapSection2);
 	padding-inline: var(--containerPadding-main);

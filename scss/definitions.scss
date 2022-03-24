@@ -12,10 +12,10 @@
 	--containerPadding-small: 0.4rem;
 
 	--paragraphWidth-thin: calc(5ch + 10vw);
-	--paragraphWidth-medium: calc(9ch + 17.5vw);
+	--paragraphWidth-medium: calc(12ch + 17.5vw);
 	--paragraphWidth-wide: calc(15ch + 30vw);
 
-	--paragraphMinWidth-thin: 30ch;
-	--paragraphMinWidth-medium: 40ch;
-	--paragraphMinWidth-wide: 50ch;
+	--paragraphMinWidth-thin: min(30ch, 100%);
+	--paragraphMinWidth-medium: min(40ch, 100%);
+	--paragraphMinWidth-wide: min(50ch, 100%);
 }

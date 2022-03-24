@@ -22,6 +22,10 @@ body {
   min-height: 100vh;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -32,8 +36,10 @@ h6 {
 }
 
 p {
+  box-sizing: border-box;
   margin-block: var(--gapPair);
   max-width: var(--paragraphWidth-medium);
+  min-width: var(--paragraphMinWidth-medium);
 }
 
 .paragraph-thin {
@@ -164,8 +170,23 @@ a.documentLink.fancyLink {
 
 .withAsideColumn {
   display: flex;
-  flex-flow: row wrap;
-  gap: var(--gapSection1);
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: var(--gapPair) var(--gapSection1);
+}
+.withAsideColumn > :first-child > :last-child {
+  margin-bottom: 0;
+}
+.withAsideColumn > :nth-child(2) {
+  align-self: center;
+}
+@media (min-width: 32rem) {
+  .withAsideColumn {
+    flex-direction: row;
+  }
+  .withAsideColumn > :nth-child(2) {
+    align-self: flex-start;
+  }
 }
 
 .wideParagraphs p {
@@ -178,19 +199,24 @@ a.documentLink.fancyLink {
 }
 
 .fancyFigure {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
   width: min-content;
+  max-width: 100%;
   margin: 0;
   margin-block: var(--gapPair);
 }
 .fancyFigure .figBorder {
   overflow: hidden;
+  display: flex;
   width: max-content;
   border: 2px solid var(--contentBorder1);
   border-radius: 6px;
   background: var(--contentBackground1);
 }
 .fancyFigure figcaption {
-  max-width: 100%;
+  width: 100%;
+  display: block;
   margin-top: var(--gapWithinPair);
   font-size: 0.9em;
   text-align: center;
@@ -233,6 +259,18 @@ a.documentLink.fancyLink {
 
 .blackLineArt {
   filter: invert(100%);
+}
+
+.columnImage {
+  min-width: 15rem;
+  width: var(--paragraphWidth-thin);
+  height: auto;
+}
+
+.wideImage {
+  min-width: 22rem;
+  width: var(--paragraphWidth-wide);
+  height: auto;
 }
 
 .logo {

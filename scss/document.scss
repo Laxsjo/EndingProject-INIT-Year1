@@ -3,13 +3,16 @@
 @use 'sass:math';
 
 body {
+	// overflow-x: clip;
+
 	display: grid;
 	grid-template:
 		0 // For the scroll anchor
 		min-content
 		1fr
-		min-content
-		/ 1fr;
+		max-content
+		// min-content
+		/ 100%;
 	grid-auto-flow: column;
 
 	position: relative;
@@ -115,12 +118,8 @@ header {
 	}
 
 	.menu {
-		// margin-left: calc(var(--width) + 1.6rem);
-		// margin-bottom: 1rem;
+		overflow-x: auto;
 		padding: 0.5rem 1rem;
-
-		// transition: none ease-out;
-		// transition-property: margin-left;
 
 		& > ul {
 			display: flex;
@@ -237,13 +236,19 @@ header {
 }
 
 main {
+	// width: 10px !important;
+	// * {
+	// 	display: none;
+	// }
+
+	justify-self: center;
+
 	position: relative;
 	z-index: 2;
 
-	min-width: min-content;
-	width: max-content;
+	// min-width: min-content;
 	max-width: 100%;
-	margin-inline: auto;
+	// margin-inline: auto;
 	padding-block: var(--gapSection2);
 	padding-inline: var(--containerPadding-main);
 
@@ -275,14 +280,18 @@ main {
 
 footer {
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	gap: var(--gapSection1);
 	justify-content: center;
+
+	justify-self: stretch;
 
 	position: relative;
 	z-index: 3;
 
-	padding: var(--containerPadding-medium);
+	box-sizing: border-box;
+	width: 100%;
+	// padding: var(--containerPadding-medium);
 
 	background: var(--headerSecondaryBackground1);
 	box-shadow: 0 0 3rem var(--shadowColor);
@@ -335,6 +344,6 @@ footer {
 		}
 	}
 	.logo {
-		--width: max(30vw, 16rem);
+		--width: min(max(30vw, 16rem), 100vw);
 	}
 }

@@ -1,6 +1,6 @@
 body {
   display: grid;
-  grid-template: 0 min-content 1fr min-content/1fr;
+  grid-template: 0 min-content 1fr max-content/100%;
   grid-auto-flow: column;
   position: relative;
   background: var(--contentBackdropBackground1);
@@ -83,6 +83,7 @@ header .logo {
   transform-origin: top left;
 }
 header .menu {
+  overflow-x: auto;
   padding: 0.5rem 1rem;
 }
 header .menu > ul {
@@ -179,12 +180,10 @@ header .menu {
 }
 
 main {
+  justify-self: center;
   position: relative;
   z-index: 2;
-  min-width: min-content;
-  width: max-content;
   max-width: 100%;
-  margin-inline: auto;
   padding-block: var(--gapSection2);
   padding-inline: var(--containerPadding-main);
   background: var(--contentBackground2);
@@ -208,12 +207,14 @@ main.leftNavMenu > :nth-child(2) {
 
 footer {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   gap: var(--gapSection1);
   justify-content: center;
+  justify-self: stretch;
   position: relative;
   z-index: 3;
-  padding: var(--containerPadding-medium);
+  box-sizing: border-box;
+  width: 100%;
   background: var(--headerSecondaryBackground1);
   box-shadow: 0 0 3rem var(--shadowColor);
 }
@@ -257,5 +258,5 @@ footer .info .contact::before {
   content: "mail";
 }
 footer .logo {
-  --width: max(30vw, 16rem);
+  --width: min(max(30vw, 16rem), 100vw);
 }/*# sourceMappingURL=document.css.map */

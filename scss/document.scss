@@ -1,4 +1,5 @@
 @use 'resources' as *;
+@use 'icons.scss' as *;
 @use 'sass:color';
 @use 'sass:math';
 
@@ -96,7 +97,7 @@ header {
 	--width: #{$logoWidthLarge};
 
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: column nowrap;
 	align-items: flex-start;
 	gap: var(--gapPair);
 
@@ -107,7 +108,7 @@ header {
 	z-index: 5;
 
 	// width: 100%;
-	padding: var(--containerPadding-fieldset);
+	padding: var(--containerPadding-page);
 
 	background-color: transparent;
 
@@ -119,7 +120,7 @@ header {
 
 	.menu {
 		overflow-x: auto;
-		padding: 0.5rem 1rem;
+		overscroll-behavior-x: contain;
 
 		& > ul {
 			display: flex;
@@ -127,8 +128,9 @@ header {
 			align-items: center;
 			gap: var(--gapPair);
 
-			padding: 0;
+			width: max-content;
 			margin: 0;
+			padding: 0.5rem var(--containerPadding-page);
 
 			li {
 				margin: 0;
@@ -145,6 +147,8 @@ header {
 					display: block;
 
 					color: var(--menuTextColor1);
+
+					text-decoration: none !important;
 
 					span {
 						vertical-align: middle;
@@ -185,12 +189,6 @@ header {
 		.menu {
 			transition-property: background-color, border-color;
 		}
-		.logo {
-			animation: logoEnlarge ease var(--duration);
-		}
-		.menu {
-			animation: menuEnlarge ease var(--duration);
-		}
 	}
 	:root.scrolling & {
 		--width: #{$logoWidthSmall};
@@ -214,7 +212,6 @@ header {
 			top: 0;
 			margin-block: calc(var(--containerPadding-fieldset) * -1);
 
-			animation: logoShrink ease var(--duration);
 			// transform: scale(
 			// 	calc(noUnit($logoWidthLarge) / noUnit($logoWidthSmall))
 			// );
@@ -223,19 +220,72 @@ header {
 			// transform: scale(var(--test));
 		}
 
-		.menu {
-			padding-block: calc(0.5rem + 2px);
-
-			animation: menuShrink ease var(--duration);
-		}
+		// .menu {
+		// 	padding-block: calc(0.5rem + 2px);
+		// }
 
 		// .logo {
 		// 	--width: 12rem;
 		// }
 	}
+
+	@media (max-width: 60rem) {
+		--width: 15rem;
+		// .logo,
+		// .menu {
+		// }
+		.logo {
+			img {
+				transition: none ease var(--duration);
+				transition-property: width;
+			}
+			.name {
+				transition: none ease var(--duration);
+				transition-property: font-size;
+			}
+		}
+		.menu {
+			align-self: stretch;
+			ul {
+				transition: none ease var(--duration);
+				transition-property: padding;
+			}
+		}
+
+		:root.scrolling & {
+			--width: 12rem;
+			.menu {
+				ul {
+					padding-inline: 0;
+				}
+			}
+		}
+	}
+	@media (min-width: 66rem) {
+		flex-direction: row;
+
+		:root:not(.scrolling) & {
+			.logo {
+				animation: logoEnlarge ease var(--duration);
+			}
+			.menu {
+				animation: menuEnlarge ease var(--duration);
+			}
+		}
+
+		:root.scrolling & {
+			.logo {
+				animation: logoShrink ease var(--duration);
+			}
+			.menu {
+				animation: menuShrink ease var(--duration);
+			}
+		}
+	}
 }
 
 main {
+	// overflow: hidden;
 	// width: 10px !important;
 	// * {
 	// 	display: none;

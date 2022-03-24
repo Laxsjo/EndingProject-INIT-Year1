@@ -1,3 +1,87 @@
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1em;
+  vertical-align: middle;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: "liga";
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+/Edge */
+  user-select: none;
+  /* Standard */
+  color: var(--mdColor1);
+}
+
+.material-icons.outlined {
+  font-family: "Material Icons Outlined" !important;
+}
+
+.material-icons.round {
+  font-family: "Material Icons Round" !important;
+}
+
+.md-small {
+  font-size: 1.125rem !important;
+  line-height: 1.125rem !important;
+}
+
+.md-medium {
+  font-size: 1.5rem !important;
+  line-height: 1.5rem !important;
+}
+
+.md-large {
+  font-size: 2.25rem !important;
+  line-height: 2.25rem !important;
+}
+
+.md-veryLarge {
+  font-size: 3rem !important;
+  line-height: 3rem !important;
+}
+
+.mdRelative-small {
+  font-size: 1.125em !important;
+  line-height: 1.125em !important;
+}
+
+.mdRelative-medium {
+  font-size: 1.5em !important;
+  line-height: 1.5em !important;
+}
+
+.mdRelative-large {
+  font-size: 2.25em !important;
+  line-height: 2.25em !important;
+}
+
+.mdRelative-veryLarge {
+  font-size: 3em !important;
+  line-height: 3em !important;
+}
+
+:root {
+  --md-small: 1.125rem;
+  --md-medium: 1.5rem;
+  --md-large: 2.25rem;
+  --md-veryLarge: 3rem;
+  --md-negativeMargin: -0.1em;
+}
+
 body {
   display: grid;
   grid-template: 0 min-content 1fr max-content/100%;
@@ -67,7 +151,7 @@ header {
   --duration: 0.3s;
   --width: 20rem;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
   align-items: flex-start;
   gap: var(--gapPair);
   position: fixed;
@@ -75,7 +159,7 @@ header {
   left: 0;
   right: 0;
   z-index: 5;
-  padding: var(--containerPadding-fieldset);
+  padding: var(--containerPadding-page);
   background-color: transparent;
   transition: none linear var(--shortDuration);
 }
@@ -84,15 +168,16 @@ header .logo {
 }
 header .menu {
   overflow-x: auto;
-  padding: 0.5rem 1rem;
+  overscroll-behavior-x: contain;
 }
 header .menu > ul {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: var(--gapPair);
-  padding: 0;
+  width: max-content;
   margin: 0;
+  padding: 0.5rem var(--containerPadding-page);
 }
 header .menu > ul li {
   margin: 0;
@@ -109,6 +194,7 @@ header .menu > ul li a {
   --underlineColor2: var(--menuTextColor1);
   display: block;
   color: var(--menuTextColor1);
+  text-decoration: none !important;
 }
 header .menu > ul li a:hover, header .menu > ul li a:focus-visible {
   background-size: 100% 2px;
@@ -120,9 +206,8 @@ header .menu > ul li a:focus-visible {
 }
 @media (any-hover: none) {
   header .menu > ul li a {
-    background-size: 100% 1px !important;
-    background-position: 0% 100% !important;
-    --underlineColor2: var(--underlineColor1) !important;
+    text-decoration: underline;
+    background: none !important;
   }
 }
 header .menu > ul li a span {
@@ -151,12 +236,6 @@ header .menu {
 :root:not(.scrolling) header .menu {
   transition-property: background-color, border-color;
 }
-:root:not(.scrolling) header .logo {
-  animation: logoEnlarge ease var(--duration);
-}
-:root:not(.scrolling) header .menu {
-  animation: menuEnlarge ease var(--duration);
-}
 :root.scrolling header {
   --width: 15rem;
   background-color: var(--menuBackground1);
@@ -172,11 +251,49 @@ header .menu {
 :root.scrolling header .logo {
   top: 0;
   margin-block: calc(var(--containerPadding-fieldset) * -1);
-  animation: logoShrink ease var(--duration);
 }
-:root.scrolling header .menu {
-  padding-block: calc(0.5rem + 2px);
-  animation: menuShrink ease var(--duration);
+@media (max-width: 60rem) {
+  header {
+    --width: 15rem;
+  }
+  header .logo img {
+    transition: none ease var(--duration);
+    transition-property: width;
+  }
+  header .logo .name {
+    transition: none ease var(--duration);
+    transition-property: font-size;
+  }
+  header .menu {
+    align-self: stretch;
+  }
+  header .menu ul {
+    transition: none ease var(--duration);
+    transition-property: padding;
+  }
+  :root.scrolling header {
+    --width: 12rem;
+  }
+  :root.scrolling header .menu ul {
+    padding-inline: 0;
+  }
+}
+@media (min-width: 66rem) {
+  header {
+    flex-direction: row;
+  }
+  :root:not(.scrolling) header .logo {
+    animation: logoEnlarge ease var(--duration);
+  }
+  :root:not(.scrolling) header .menu {
+    animation: menuEnlarge ease var(--duration);
+  }
+  :root.scrolling header .logo {
+    animation: logoShrink ease var(--duration);
+  }
+  :root.scrolling header .menu {
+    animation: menuShrink ease var(--duration);
+  }
 }
 
 main {

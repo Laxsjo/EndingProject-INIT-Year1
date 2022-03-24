@@ -18,7 +18,8 @@
 			"arve",
 			"Barnarve",
 			"kyrkolika",
-			"Sigsarve"
+			"Sigsarve",
+			"Vecko"
 		],
 		"files.exclude": {
 			"javascript/**": true,

@@ -168,6 +168,10 @@ a.documentLink.fancyLink {
   gap: var(--gapSection1);
 }
 
+.wideParagraphs p {
+  max-width: var(--paragraphWidth-wide);
+}
+
 .scrollDetector {
   width: 100%;
   height: 0;
@@ -197,6 +201,34 @@ a.documentLink.fancyLink {
 }
 .fancyFigure.right {
   float: right;
+}
+
+.fancyTable {
+  overflow: clip;
+  width: fit-content;
+  outline: 2px solid fuchsia;
+  border-radius: 0.2rem;
+}
+.fancyTable table {
+  border-collapse: collapse;
+  margin: -2px;
+}
+.fancyTable th,
+.fancyTable td {
+  border: 2px solid goldenrod;
+  text-align: center;
+}
+.fancyTable th {
+  background: var(--contentHeaderBackground1);
+}
+.fancyTable tr:nth-child(2n+1) td {
+  background: var(--listBackground1);
+}
+.fancyTable tr:nth-child(2n+1) td {
+  background: var(--listBackground2);
+}
+.fancyTable thead th {
+  padding-inline: calc(var(--gapPair) / 2);
 }
 
 .blackLineArt {

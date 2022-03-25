@@ -132,9 +132,9 @@ dl {
 		// margin-left: var(--containerPadding-fieldset);
 		margin-bottom: var(--gapPair);
 
-		border-top: 2px solid var(--contentBorder1);
+		// border-top: 2px solid var(--contentBorder1);
 
-		background: var(--contentBackground1);
+		// background: var(--contentBackground1);
 
 		// color: var(--textGrayColor);
 
@@ -145,6 +145,14 @@ dl {
 
 			font-size: var(--md-medium);
 		}
+	}
+}
+
+ol,
+ul {
+	li {
+		max-width: var(--paragraphWidth-wide);
+		margin-bottom: var(--gapWithinPair);
 	}
 }
 
@@ -260,11 +268,15 @@ a.documentLink.fancyLink {
 }
 
 .asideContent {
-	float: right;
+	// float: right;
 
-	margin-left: 2rem;
+	// margin-left: 2rem;
+	margin-block: var(--gapPair);
 	padding-inline: 0.6rem;
 	padding-block: 0.4rem;
+
+	margin-right: calc(var(--containerPadding-main) * -1);
+	padding-right: var(--containerPadding-main);
 
 	border-left: 2px solid var(--coloredTitleTextColor1);
 
@@ -279,6 +291,14 @@ a.documentLink.fancyLink {
 		margin-top: 0;
 
 		font-size: 1.4rem;
+	}
+
+	p {
+		max-width: var(--paragraphWidth-thin);
+	}
+
+	&.float {
+		float: right;
 	}
 }
 
@@ -296,6 +316,10 @@ a.documentLink.fancyLink {
 	// .aside {
 	// 	grid-area: aside;
 	// }
+
+	& > * {
+		max-width: 100%;
+	}
 
 	& > :first-child {
 		& > :last-child {
@@ -324,6 +348,28 @@ a.documentLink.fancyLink {
 .scrollDetector {
 	width: 100%;
 	height: 0;
+}
+
+.fancyAddress {
+	width: fit-content;
+	margin-block: var(--gapPair);
+	padding: var(--containerPadding-medium);
+
+	border: 2px solid var(--contentBorder1);
+	border-radius: 0.4rem;
+
+	background-color: var(--contentBackground1);
+}
+
+.fancyImage {
+	overflow: auto hidden;
+	overscroll-behavior-x: contain;
+
+	width: 100%;
+	max-width: 100%;
+
+	border: 2px solid var(--contentBorder1);
+	border-radius: 0.4rem;
 }
 
 .fancyFigure {
@@ -355,8 +401,13 @@ a.documentLink.fancyLink {
 		background: var(--contentBackground1);
 	}
 
+	& > :not(figcaption) {
+		width: max-content;
+		// max-width: 100%;
+	}
+
 	figcaption {
-		// max-width: min(var(--paragraphWidth-wide), 100%);
+		max-width: var(--paragraphWidth-wide);
 		width: 100%;
 		display: block;
 		// margin-inline: auto;
@@ -474,12 +525,44 @@ a.documentLink.fancyLink {
 .columnImage {
 	min-width: 15rem;
 	width: var(--paragraphWidth-thin);
+	max-width: 100%;
+	height: auto;
+}
+.thinImage {
+	min-width: 12rem;
+	width: calc(var(--paragraphWidth-thin) * 0.7);
+	max-width: 100%;
+	height: auto;
+}
+.mediumImage {
+	min-width: 18rem;
+	width: var(--paragraphWidth-medium);
+	max-width: 100%;
 	height: auto;
 }
 .wideImage {
 	min-width: 22rem;
 	width: var(--paragraphWidth-wide);
+	max-width: 100%;
 	height: auto;
+}
+
+.columns {
+	display: flex;
+	flex-flow: row wrap;
+	gap: var(--gapWithinPair);
+}
+
+.highlightList {
+	list-style-type: none;
+	padding-left: 0;
+
+	li {
+		font-weight: 600;
+		font-style: italic;
+
+		color: var(--textBoldColor);
+	}
 }
 
 .logo {

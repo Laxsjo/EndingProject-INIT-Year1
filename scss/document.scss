@@ -97,7 +97,7 @@ header {
 	--width: #{$logoWidthLarge};
 
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: column-reverse nowrap;
 	align-items: flex-start;
 	gap: var(--gapPair);
 
@@ -253,7 +253,13 @@ header {
 		}
 
 		:root.scrolling & {
-			--width: 12rem;
+			--width: 8rem;
+
+			.logo {
+				.name {
+					display: none;
+				}
+			}
 			.menu {
 				ul {
 					padding-inline: 0;
@@ -279,6 +285,16 @@ header {
 			}
 			.menu {
 				animation: menuShrink ease var(--duration);
+			}
+		}
+	}
+	@media (max-width: 19rem) {
+		--width: 12rem;
+
+		:root.scrolling & {
+			--width: 8rem;
+			.logo {
+				display: none;
 			}
 		}
 	}
@@ -310,20 +326,25 @@ main {
 	}
 
 	&.leftNavMenu {
-		display: grid;
-		grid-template:
-			'sidebar' '.' max-content
-			/ auto 1fr;
+		// display: grid;
+		// grid-template:
+		// 	'sidebar' '.' max-content
+		// 	/ auto 1fr;
+		display: flex;
+		flex-flow: row wrap;
 
 		padding-top: 0;
-		padding-left: 0;
+		// padding-left: 0;
 
 		.pageNav {
 			grid-area: sidebar;
+			margin-left: calc(var(--containerPadding-main) * -1);
 		}
 
 		& > :nth-child(2) {
 			margin-top: var(--gapSection2);
+
+			max-width: 100%;
 		}
 	}
 }

@@ -186,8 +186,6 @@ dl dd {
   padding-right: var(--containerPadding-fieldset);
   padding-left: var(--gapPair);
   margin-bottom: var(--gapPair);
-  border-top: 2px solid var(--contentBorder1);
-  background: var(--contentBackground1);
 }
 dl dd::before {
   content: "navigate_next";
@@ -216,6 +214,12 @@ dl dd::before {
   user-select: none;
   /* Standard */
   font-size: var(--md-medium);
+}
+
+ol li,
+ul li {
+  max-width: var(--paragraphWidth-wide);
+  margin-bottom: var(--gapWithinPair);
 }
 
 :focus-visible {
@@ -317,10 +321,11 @@ a.documentLink.fancyLink {
 }
 
 .asideContent {
-  float: right;
-  margin-left: 2rem;
+  margin-block: var(--gapPair);
   padding-inline: 0.6rem;
   padding-block: 0.4rem;
+  margin-right: calc(var(--containerPadding-main) * -1);
+  padding-right: var(--containerPadding-main);
   border-left: 2px solid var(--coloredTitleTextColor1);
   background-color: var(--contentBackground3);
 }
@@ -333,12 +338,21 @@ a.documentLink.fancyLink {
   margin-top: 0;
   font-size: 1.4rem;
 }
+.asideContent p {
+  max-width: var(--paragraphWidth-thin);
+}
+.asideContent.float {
+  float: right;
+}
 
 .withAsideColumn {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   gap: var(--gapPair) var(--gapSection1);
+}
+.withAsideColumn > * {
+  max-width: 100%;
 }
 .withAsideColumn > :first-child > :last-child {
   margin-bottom: 0;
@@ -364,6 +378,24 @@ a.documentLink.fancyLink {
   height: 0;
 }
 
+.fancyAddress {
+  width: fit-content;
+  margin-block: var(--gapPair);
+  padding: var(--containerPadding-medium);
+  border: 2px solid var(--contentBorder1);
+  border-radius: 0.4rem;
+  background-color: var(--contentBackground1);
+}
+
+.fancyImage {
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  width: 100%;
+  max-width: 100%;
+  border: 2px solid var(--contentBorder1);
+  border-radius: 0.4rem;
+}
+
 .fancyFigure {
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -380,7 +412,11 @@ a.documentLink.fancyLink {
   border-radius: 6px;
   background: var(--contentBackground1);
 }
+.fancyFigure > :not(figcaption) {
+  width: max-content;
+}
 .fancyFigure figcaption {
+  max-width: var(--paragraphWidth-wide);
   width: 100%;
   display: block;
   margin-top: var(--gapWithinPair);
@@ -481,13 +517,45 @@ a.documentLink.fancyLink {
 .columnImage {
   min-width: 15rem;
   width: var(--paragraphWidth-thin);
+  max-width: 100%;
+  height: auto;
+}
+
+.thinImage {
+  min-width: 12rem;
+  width: calc(var(--paragraphWidth-thin) * 0.7);
+  max-width: 100%;
+  height: auto;
+}
+
+.mediumImage {
+  min-width: 18rem;
+  width: var(--paragraphWidth-medium);
+  max-width: 100%;
   height: auto;
 }
 
 .wideImage {
   min-width: 22rem;
   width: var(--paragraphWidth-wide);
+  max-width: 100%;
   height: auto;
+}
+
+.columns {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--gapWithinPair);
+}
+
+.highlightList {
+  list-style-type: none;
+  padding-left: 0;
+}
+.highlightList li {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--textBoldColor);
 }
 
 .logo {

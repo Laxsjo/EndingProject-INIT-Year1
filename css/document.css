@@ -151,7 +151,7 @@ header {
   --duration: 0.3s;
   --width: 20rem;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column-reverse nowrap;
   align-items: flex-start;
   gap: var(--gapPair);
   position: fixed;
@@ -272,7 +272,10 @@ header .menu {
     transition-property: padding;
   }
   :root.scrolling header {
-    --width: 12rem;
+    --width: 8rem;
+  }
+  :root.scrolling header .logo .name {
+    display: none;
   }
   :root.scrolling header .menu ul {
     padding-inline: 0;
@@ -295,6 +298,17 @@ header .menu {
     animation: menuShrink ease var(--duration);
   }
 }
+@media (max-width: 19rem) {
+  header {
+    --width: 12rem;
+  }
+  :root.scrolling header {
+    --width: 8rem;
+  }
+  :root.scrolling header .logo {
+    display: none;
+  }
+}
 
 main {
   justify-self: center;
@@ -310,16 +324,17 @@ main h1 {
   margin-top: 0;
 }
 main.leftNavMenu {
-  display: grid;
-  grid-template: "sidebar" "." max-content/auto 1fr;
+  display: flex;
+  flex-flow: row wrap;
   padding-top: 0;
-  padding-left: 0;
 }
 main.leftNavMenu .pageNav {
   grid-area: sidebar;
+  margin-left: calc(var(--containerPadding-main) * -1);
 }
 main.leftNavMenu > :nth-child(2) {
   margin-top: var(--gapSection2);
+  max-width: 100%;
 }
 
 footer {

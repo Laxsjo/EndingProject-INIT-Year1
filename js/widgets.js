@@ -189,7 +189,7 @@ export class NestedMenu extends Menu {
 					index,
 					item.classList.contains('alwaysOpen')
 				);
-				item.setAttribute('aria-haspopup', 'true');
+				item.setAttribute('aria-haspopup', 'tree');
 				item.setAttribute('aria-expanded', 'false');
 
 				// console.log('found item', item, 'with submenu');
@@ -328,9 +328,6 @@ export class Submenu extends NestedMenu {
 		let index = this.parentIndex + (direction === 1 ? 1 : 0);
 
 		// this.container.classList.remove("expanded");
-		for (const item of this.items) {
-			item.tabIndex = -1;
-		}
 
 		this.parent.selectItem(index);
 
@@ -338,6 +335,10 @@ export class Submenu extends NestedMenu {
 	}
 
 	closeSubmenu() {
+		for (const item of this.items) {
+			item.tabIndex = -1;
+		}
+
 		this.parent.items[this.parentIndex].setAttribute(
 			'aria-expanded',
 			'false'

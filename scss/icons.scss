@@ -23,6 +23,17 @@
 	user-select: none; /* Standard */
 }
 
+@mixin iconOutlined {
+	@include icon();
+
+	font-family: 'Material Icons Outlined';
+}
+@mixin iconRound {
+	@include icon();
+
+	font-family: 'Material Icons Round';
+}
+
 .material-icons {
 	@include icon();
 

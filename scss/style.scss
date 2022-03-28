@@ -370,9 +370,9 @@ a.documentLink.fancyLink {
 	}
 
 	&::before {
-		content: 'maps_home_work';
+		content: 'signpost';
 
-		font-family: 'Material Icons Outlined';
+		@include iconOutlined;
 		font-size: var(--md-medium);
 		font-style: normal;
 

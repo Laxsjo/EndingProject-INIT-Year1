@@ -194,8 +194,9 @@ header .menu > ul li a {
   --underlineColor1: var(--menuTextColor1);
   --underlineColor2: var(--menuTextColor1);
   display: block;
-  color: var(--menuTextColor1);
+  font-size: 2rem;
   text-decoration: none !important;
+  color: var(--menuTextColor1);
 }
 header .menu > ul li a:hover, header .menu > ul li a:focus-visible {
   background-size: 100% 2px;
@@ -216,7 +217,7 @@ header .menu > ul li a span {
 }
 header .menu > ul li a .icon {
   font-family: "Material Icons Outlined";
-  font-size: var(--md-medium);
+  font-size: var(--md-large);
 }
 header .menu > ul li a[aria-current] {
   color: var(--menuColorColor2);
@@ -225,6 +226,14 @@ header .menu > ul li a:hover, header .menu > ul li a:focus-visible {
   --underlineColor1: var(--menuHoverTextColor1);
   --underlineColor2: var(--menuHoverTextColor2);
   color: var(--menuHoverTextColor1);
+}
+@media (pointer: fine) {
+  header .menu > ul li a {
+    font-size: 1rem;
+  }
+  header .menu > ul li a .icon {
+    font-size: var(--md-medium);
+  }
 }
 header .logo,
 header .menu {

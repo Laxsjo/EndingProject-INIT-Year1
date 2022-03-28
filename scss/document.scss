@@ -147,16 +147,17 @@ header {
 
 					display: block;
 
-					color: var(--menuTextColor1);
-
+					font-size: 2rem;
 					text-decoration: none !important;
+
+					color: var(--menuTextColor1);
 
 					span {
 						vertical-align: middle;
 					}
 					.icon {
 						font-family: 'Material Icons Outlined';
-						font-size: var(--md-medium);
+						font-size: var(--md-large);
 					}
 
 					&[aria-current] {
@@ -169,6 +170,14 @@ header {
 						--underlineColor2: var(--menuHoverTextColor2);
 
 						color: var(--menuHoverTextColor1);
+					}
+
+					@media (pointer: fine) {
+						font-size: 1rem;
+
+						.icon {
+							font-size: var(--md-medium);
+						}
 					}
 				}
 			}

@@ -83,6 +83,7 @@
 }
 
 .sideMenu {
+  overflow: hidden;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -105,7 +106,9 @@
   transition: background-size 0.2s;
   --underlineColor1: var(--menuTextColor1);
   --underlineColor2: var(--menuTextColor2);
+  font-size: 2rem;
   color: var(--menuTextColor1);
+  text-decoration: none !important;
 }
 .sideMenu [role=menuitem]:hover, .sideMenu [role=menuitem]:focus-visible {
   background-size: 100% 2px;
@@ -139,13 +142,13 @@
 }
 .sideMenu li {
   margin-bottom: var(--gapWithinSubPair);
+  outline-style: dashed;
+  outline-width: 2px;
+  outline-color: transparent;
+  transition: outline-color ease 0.2s;
 }
 .sideMenu li:last-child {
   margin-bottom: 0;
-}
-.sideMenu li.hasSubmenu:hover {
-  margin-block: -2px;
-  border-block: 2px dashed var(--inputHoverBorder1);
 }
 .sideMenu .submenu {
   overflow: hidden;
@@ -160,7 +163,10 @@
   height: max-content !important;
 }
 
-@media (any-pointer: fine) {
+@media (pointer: fine) {
+  .sideMenu [role=menuitem] {
+    font-size: 1.1rem;
+  }
   .sideMenu [role=menuitem] + .icon {
     font-family: "Material Icons";
     font-weight: normal;
@@ -202,6 +208,11 @@
   }
   .sideMenu .submenu {
     height: 0;
+  }
+
+  li.hasSubmenu:hover {
+    outline-width: 2px;
+    outline-color: var(--inputHoverBorder1);
   }
 
   li:hover > .submenu,

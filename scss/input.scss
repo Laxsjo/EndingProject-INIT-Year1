@@ -2,6 +2,8 @@
 @use 'icons.scss' as *;
 
 .sideMenu {
+	overflow: hidden;
+
 	list-style-type: none;
 	// [role='menuitem']:not([aria-expanded='true']) + .submenu {
 	// 	// background-color: lightcoral;
@@ -32,7 +34,11 @@
 		--underlineColor1: var(--menuTextColor1);
 		--underlineColor2: var(--menuTextColor2);
 
+		font-size: 2rem;
+
 		color: var(--menuTextColor1);
+
+		text-decoration: none !important;
 
 		&:hover,
 		&:focus-visible {
@@ -62,16 +68,14 @@
 	li {
 		margin-bottom: var(--gapWithinSubPair);
 
+		outline-style: dashed;
+		outline-width: 2px;
+		outline-color: transparent;
+
+		transition: outline-color ease 0.2s;
+
 		&:last-child {
 			margin-bottom: 0;
-		}
-
-		&.hasSubmenu {
-			&:hover {
-				margin-block: -2px;
-
-				border-block: 2px dashed var(--inputHoverBorder1);
-			}
 		}
 	}
 
@@ -97,9 +101,10 @@
 	}
 }
 
-@media (any-pointer: fine) {
+@media (pointer: fine) {
 	.sideMenu {
 		[role='menuitem'] {
+			font-size: 1.1rem;
 			& + .icon {
 				@include icon();
 
@@ -130,12 +135,22 @@
 		}
 	}
 
+	li {
+		&.hasSubmenu {
+			&:hover {
+				outline-width: 2px;
+				outline-color: var(--inputHoverBorder1);
+			}
+		}
+	}
+
 	li:hover > .submenu,
 	[role='menuitem'][aria-expanded='true'] ~ .submenu {
 		// height: auto;
 		// height: revert !important;
 		// --var: 5rem;
 		height: var(--height, max-content);
+		// height: 0px;
 	}
 
 	li:hover > [role='menuitem'] + .icon,

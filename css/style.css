@@ -379,12 +379,26 @@ a.documentLink.fancyLink {
 }
 
 .fancyAddress {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--gapWithinPair);
   width: fit-content;
   margin-block: var(--gapPair);
   padding: var(--containerPadding-medium);
   border: 2px solid var(--contentBorder1);
   border-radius: 0.4rem;
   background-color: var(--contentBackground1);
+}
+.fancyAddress > div {
+  flex-grow: 1;
+  align-self: stretch;
+}
+.fancyAddress::before {
+  content: "maps_home_work";
+  font-family: "Material Icons Outlined";
+  font-size: var(--md-medium);
+  font-style: normal;
+  color: var(--coloredTextColor1);
 }
 
 .fancyImage {
@@ -594,6 +608,8 @@ a.documentLink.fancyLink {
   overscroll-behavior-x: contain;
   background: var(--contentBackground1);
   max-width: 100%;
+  width: fit-content;
+  outline: 2px solid var(--contentBorder1);
   border-radius: 0.4rem;
 }
 .rentTable table {
@@ -624,6 +640,9 @@ a.documentLink.fancyLink {
   padding-block: calc(var(--gapPair) / 2);
   padding-inline: 0;
 }
+.rentTable tr.seperator td:nth-child(2) {
+  border-inline-width: 2px;
+}
 .rentTable tr.seperator td::before {
   content: "";
   display: block;
@@ -631,20 +650,20 @@ a.documentLink.fancyLink {
   border-top: 2px dashed;
   border-color: inherit;
 }
-.rentTable tr.seperator td:nth-child(2) {
-  border-inline-width: 2px;
-}
 .rentTable tr.seperator:first-child td {
   padding-top: 0;
 }
 .rentTable tr.seperator:first-child td::before {
   border-top-style: solid;
 }
-.rentTable thead th {
+.rentTable thead th,
+.rentTable thead td {
   padding-inline: calc(var(--gapWithinPair));
   background: var(--contentBackground1);
 }
-.rentTable thead th:nth-child(1), .rentTable thead th:nth-child(2) {
+.rentTable thead th:nth-child(1), .rentTable thead th:nth-child(2),
+.rentTable thead td:nth-child(1),
+.rentTable thead td:nth-child(2) {
   font-weight: 500;
 }
 .rentTable tbody th:nth-child(1) {
@@ -652,11 +671,15 @@ a.documentLink.fancyLink {
   font-size: 1.2em;
 }
 .rentTable tbody th:nth-child(6) {
-  padding-top: 0;
+  padding-block: 0;
+  vertical-align: top;
+}
+.rentTable tbody th:nth-child(6) > span {
+  display: block;
   font-weight: 400;
   font-style: italic;
-  vertical-align: top;
   text-align: start;
+  line-height: 1.2em;
 }
 .rentTable tbody td:nth-child(3) {
   border-left: 2px solid var(--contentBorder1);
@@ -696,6 +719,9 @@ a.documentLink.fancyLink {
 }
 @media (max-width: 32rem) {
   .rentTable tbody th:nth-child(6) {
-    writing-mode: sideways-rl;
+    width: calc(var(--gapWithinPair) + 1.2em);
+  }
+  .rentTable tbody th:nth-child(6) > span {
+    writing-mode: vertical-rl;
   }
 }/*# sourceMappingURL=style.css.map */

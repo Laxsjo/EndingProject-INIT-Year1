@@ -95,6 +95,9 @@
   border-bottom-width: 2px;
   border-bottom-right-radius: 5px;
 }
+.sideMenu:focus-within {
+  border-color: var(--focusColor2);
+}
 .sideMenu ul {
   list-style-type: none;
 }

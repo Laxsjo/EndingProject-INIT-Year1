@@ -24,6 +24,10 @@
 	border-bottom-width: 2px;
 	border-bottom-right-radius: 5px;
 
+	&:focus-within {
+		border-color: var(--focusColor2);
+	}
+
 	ul {
 		list-style-type: none;
 	}

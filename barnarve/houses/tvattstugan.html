@@ -81,11 +81,6 @@
 					aria-orientation="horizontal"
 				>
 					<li role="none">
-						<a role="menuitem" href="/EndingProject-INIT-Year1/">
-							<span>Hem</span>
-						</a>
-					</li>
-					<li role="none">
 						<a
 							role="menuitem"
 							aria-current="page"
@@ -134,134 +129,159 @@
 				</ul>
 			</nav>
 		</header>
-		<main class="leftNavMenu">
-			<nav class="pageNav">
-				<ul
-					class="sideMenu menuWidget"
-					role="menu"
-					aria-orientation="vertical"
-				>
+		<main>
+			<nav class="breadcrumbs" aria-labelledby="breadcrumbsHeader">
+				<h1 class="breadcrumbsHeader">Plats</h1>
+				<ol>
+					<li><a href="/EndingProject-INIT-Year1/">Hem</a></li>
 					<li>
-						<a
-							role="menuitem"
-							href="/EndingProject-INIT-Year1/barnarve/"
+						<a href="/EndingProject-INIT-Year1/barnarve/"
+							>Barnarve</a
 						>
-							Barnarve
-						</a>
 					</li>
-					<li class="hasSubmenu">
-						<a
-							class="alwaysOpen"
-							role="menuitem"
-							href="/EndingProject-INIT-Year1/barnarve/houses/"
+					<li>
+						<a href="/EndingProject-INIT-Year1/barnarve/houses/"
+							>Husen</a
 						>
-							Husen
-						</a>
-						<span class="icon">expand_more</span>
-						<ul class="submenu submenuWidget" role="menu">
-							<li>
-								<a
-									role="menuitem"
-									href="/EndingProject-INIT-Year1/barnarve/houses/storaHuset.html"
-								>
-									Stora Huset
-								</a>
-							</li>
-							<li>
-								<a
-									role="menuitem"
-									href="/EndingProject-INIT-Year1/barnarve/houses/funkis.html"
-								>
-									Funkis
-								</a>
-							</li>
-							<li>
-								<a
-									role="menuitem"
-									href="/EndingProject-INIT-Year1/barnarve/houses/strandstugan.html"
-								>
-									Strandstugan
-								</a>
-							</li>
-							<li>
-								<a
-									role="menuitem"
-									aria-current="location"
-									href="/EndingProject-INIT-Year1/barnarve/houses/tvattstugan.html"
-								>
-									Tvättstugan
-								</a>
-							</li>
-						</ul>
 					</li>
 					<li>
 						<a
-							role="menuitem"
-							href="/EndingProject-INIT-Year1/barnarve/location.html"
+							aria-current="location"
+							href="/EndingProject-INIT-Year1/barnarve/houses/tvattstugan.html"
+							>Tvättstugan</a
 						>
-							Platsen
-						</a>
 					</li>
-				</ul>
+				</ol>
 			</nav>
-			<div>
-				<h1>Tvättstugan</h1>
-				<div class="withAsideColumn">
-					<div>
-						<p>
-							Tvättstugan är Barnarves äldsta hus. Den lär ha
-							byggts i slutet av 1700-talet på en plats som heter
-							Guffride i Alskogs socken, där finns fortfarande en
-							husgrund som skulle kunna vara efter Tvättstugan.
-							Den flyttades hit redan i samband med att Stora
-							huset byggdes 1919, enligt uppgift på släde under
-							vintern.
-						</p>
-						<p>
-							Ursprungligen var huset en så kallad parstuga; ett
-							rum på var sida om ingången och en liten kammare
-							rakt fram. Huset är ett bulhus med liggande bulor
-							mellan stolpar och stående bräder på in- och utsidan
-							och är ett fint gotländskt exempel denna på
-							byggteknik. Därför är huset upptaget som
-							kulturhistoriskt intressant hos Länsstyrelsen på
-							Gotlan.
-						</p>
-						<p>
-							Behovet av daglig tvätt var förstås stort i den
-							stora sex-barnsfamiljen och det ena av de två rummen
-							samt den lilla kammaren iordningställdes till
-							tvättstuga. Även idag finns här ställets
-							tvättmaskin, men huset rymmer även Barnarves
-							redskapsutrymme. Det andra rummet är fortfarande
-							sovrum och här finns en extra sängplats för de som
-							bor i Stora huset.
-						</p>
-					</div>
-					<div>
-						<div class="fancyImage">
-							<img
-								class="mediumImage blackLineArt"
-								src="/EndingProject-INIT-Year1/img/drawings/tvattstugan-blueprint.png"
-								width="300"
-								height="461"
-								alt="Ritning över Tvättstugan"
-							/>
+			<div class="leftNavMenu">
+				<nav class="pageNav">
+					<ul
+						class="sideMenu menuWidget"
+						role="menu"
+						aria-orientation="vertical"
+					>
+						<li>
+							<a
+								role="menuitem"
+								href="/EndingProject-INIT-Year1/barnarve/"
+							>
+								Barnarve
+							</a>
+						</li>
+						<li class="hasSubmenu">
+							<a
+								class="alwaysOpen"
+								role="menuitem"
+								href="/EndingProject-INIT-Year1/barnarve/houses/"
+							>
+								Husen
+							</a>
+							<span class="icon">expand_more</span>
+							<ul class="submenu submenuWidget" role="menu">
+								<li>
+									<a
+										role="menuitem"
+										href="/EndingProject-INIT-Year1/barnarve/houses/storaHuset.html"
+									>
+										Stora Huset
+									</a>
+								</li>
+								<li>
+									<a
+										role="menuitem"
+										href="/EndingProject-INIT-Year1/barnarve/houses/funkis.html"
+									>
+										Funkis
+									</a>
+								</li>
+								<li>
+									<a
+										role="menuitem"
+										href="/EndingProject-INIT-Year1/barnarve/houses/strandstugan.html"
+									>
+										Strandstugan
+									</a>
+								</li>
+								<li>
+									<a
+										role="menuitem"
+										aria-current="page"
+										href="/EndingProject-INIT-Year1/barnarve/houses/tvattstugan.html"
+									>
+										Tvättstugan
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a
+								role="menuitem"
+								href="/EndingProject-INIT-Year1/barnarve/location.html"
+							>
+								Platsen
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<div>
+					<h1>Tvättstugan</h1>
+					<div class="withAsideColumn">
+						<div>
+							<p>
+								Tvättstugan är Barnarves äldsta hus. Den lär ha
+								byggts i slutet av 1700-talet på en plats som
+								heter Guffride i Alskogs socken, där finns
+								fortfarande en husgrund som skulle kunna vara
+								efter Tvättstugan. Den flyttades hit redan i
+								samband med att Stora huset byggdes 1919, enligt
+								uppgift på släde under vintern.
+							</p>
+							<p>
+								Ursprungligen var huset en så kallad parstuga;
+								ett rum på var sida om ingången och en liten
+								kammare rakt fram. Huset är ett bulhus med
+								liggande bulor mellan stolpar och stående bräder
+								på in- och utsidan och är ett fint gotländskt
+								exempel denna på byggteknik. Därför är huset
+								upptaget som kulturhistoriskt intressant hos
+								Länsstyrelsen på Gotlan.
+							</p>
+							<p>
+								Behovet av daglig tvätt var förstås stort i den
+								stora sex-barnsfamiljen och det ena av de två
+								rummen samt den lilla kammaren iordningställdes
+								till tvättstuga. Även idag finns här ställets
+								tvättmaskin, men huset rymmer även Barnarves
+								redskapsutrymme. Det andra rummet är fortfarande
+								sovrum och här finns en extra sängplats för de
+								som bor i Stora huset.
+							</p>
+						</div>
+						<div>
+							<div class="fancyImage">
+								<img
+									class="mediumImage blackLineArt"
+									src="/EndingProject-INIT-Year1/img/drawings/tvattstugan-blueprint.png"
+									width="300"
+									height="461"
+									alt="Ritning över Tvättstugan"
+								/>
+							</div>
 						</div>
 					</div>
+					<figure class="fancyFigure">
+						<div class="figBorder">
+							<img
+								class="mediumImage"
+								src="/EndingProject-INIT-Year1/img/houses/tvattstugan/Tvattstugan.jpg"
+								width="300"
+								height="225"
+								alt="Ett litet omålat hus, ett brant tak täckt av gammalt tegel, rosor på var sida om den bruna dörren och på båda sidor ett fönster."
+							/>
+						</div>
+						<figcaption>Tvättstugan med blommande rosor</figcaption>
+					</figure>
 				</div>
-				<figure class="fancyFigure">
-					<div class="figBorder">
-						<img
-							class="mediumImage"
-							src="/EndingProject-INIT-Year1/img/houses/tvattstugan/Tvattstugan.jpg"
-							width="300"
-							height="225"
-							alt="Ett litet omålat hus, ett brant tak täckt av gammalt tegel, rosor på var sida om den bruna dörren och på båda sidor ett fönster."
-						/>
-					</div>
-					<figcaption>Tvättstugan med blommande rosor</figcaption>
-				</figure>
 			</div>
 		</main>
 

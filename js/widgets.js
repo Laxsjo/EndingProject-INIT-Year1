@@ -187,7 +187,7 @@ export class NestedMenu extends Menu {
 					submenuElement,
 					this,
 					index,
-					item.classList.contains('alwaysOpen')
+					item.parentElement.classList.contains('alwaysOpen')
 				);
 				item.setAttribute('aria-haspopup', 'tree');
 				item.setAttribute('aria-expanded', 'false');

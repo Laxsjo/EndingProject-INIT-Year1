@@ -107,58 +107,55 @@
 
 @media (pointer: fine) {
 	.sideMenu {
-		[role='menuitem'] {
-			font-size: 1.1rem;
-			& + .icon {
-				@include icon();
+		li {
+			& > [role='menuitem'] {
+				font-size: 1.1rem;
+				& + .icon {
+					@include icon();
 
-				display: inline-block;
+					display: inline-block;
 
-				font-family: 'material icons outlined';
-				font-size: var(--md-medium);
+					font-family: 'material icons outlined';
+					font-size: var(--md-medium);
 
-				color: var(--mdColor1);
+					color: var(--mdColor1);
 
-				transform: rotate(90deg);
+					transform: rotate(90deg);
 
-				transition: none ease 0.2s;
-				transition-property: transform;
+					transition: none ease 0.2s;
+					transition-property: transform;
+				}
 			}
 
-			&.alwaysOpen + .icon {
-				transform: rotate(0) !important;
+			& > .submenu {
+				height: 0;
+			}
 
-				& + .submenu {
+			&.alwaysOpen {
+				& > .icon {
+					transform: rotate(0) !important;
+				}
+				& > .submenu {
 					height: max-content !important;
 				}
 			}
-		}
 
-		.submenu {
-			height: 0;
-		}
-	}
+			&.hasSubmenu:not(.alwaysOpen) {
+				&:hover {
+					outline-width: 2px;
+					outline-color: var(--inputHoverBorder1);
+				}
+			}
 
-	li {
-		&.hasSubmenu {
-			&:hover {
-				outline-width: 2px;
-				outline-color: var(--inputHoverBorder1);
+			&:hover > .submenu,
+			[role='menuitem'][aria-expanded='true'] ~ .submenu {
+				height: var(--height, max-content);
+			}
+
+			&:hover > .icon,
+			[role='menuitem'][aria-expanded='true'] ~ .icon {
+				transform: rotate(0deg);
 			}
 		}
-	}
-
-	li:hover > .submenu,
-	[role='menuitem'][aria-expanded='true'] ~ .submenu {
-		// height: auto;
-		// height: revert !important;
-		// --var: 5rem;
-		height: var(--height, max-content);
-		// height: 0px;
-	}
-
-	li:hover > [role='menuitem'] + .icon,
-	[role='menuitem'][aria-expanded='true'] + .icon {
-		transform: rotate(0deg);
 	}
 }

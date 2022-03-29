@@ -1,0 +1,64 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        path {
+            stroke: black;
+            fill: none;
+        }
+
+        svg {
+            position: relative;
+            /* border: 1px solid fuchsia; */
+            /* background-color: aqua; */
+
+            background-color: antiquewhite;
+        }
+
+        .box {
+            transform-style: preserve-3d;
+            /* transform: rotateX(-15deg) rotateY(30deg) skewY(); */
+        }
+
+        .face {
+            backface-visibility: visible;
+        }
+
+        .front {
+            /* position: relative; */
+            transform: translateY(20px);
+        }
+
+        .side {
+            /* position: relative; */
+            /* z-index: 10; */
+
+            /* transform: perspective(1000px) rotateX(20deg) rotateY(30deg) translate3d(0px, 0, 0); */
+            /* transform-origin: 0 100px; */
+            transform: translateX(80px) scaleX(calc(1 / 4)) skewY(-14.04deg) translateY(20px);
+
+            /* stroke: gold; */
+
+        }
+
+        .top {
+            /* position: relative; */
+            /* transform-origin: 0 20px; */
+            transform: translateX(20px) scaleY(calc(1 / 4)) skewX(-14.04deg);
+        }
+    </style>
+    <defs>
+        <pattern id="gridPattern" viewBox="0,0,10,10" width="10%" height="10%">
+            <path d="M0,0 H10 V10" stroke-width="1" />
+            <!-- <rect width="1" height="1" fill="white" stroke-width="0.1" stroke="red" /> -->
+        </pattern>
+        <symbol viewBox="0 0 100 100" id="grid">
+            <rect width="100%" height="100%" fill="url(#gridPattern)" />
+            <path d="M0,0 V100 H100" stroke-width="1" fill="none" />
+        </symbol>
+    </defs>
+    <g class="box">
+        <use class="face front" href="#grid" width="80" height="80" />
+        <use class="face side" href="#grid" width="80" height="80" />
+        <use class="face top" href="#grid" width="80" height="80" />
+    </g>
+
+</svg>

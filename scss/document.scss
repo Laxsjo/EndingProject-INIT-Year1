@@ -385,21 +385,21 @@ main {
 				}
 
 				& > a {
-					--underlineHoverColor1: var(--linkHover1);
-					--underlineHoverColor2: var(--linkHover2);
-
 					@include fancyLink;
 
 					color: var(--textGrayColor);
 
 					&:hover,
 					&:focus-visible {
+						--underlineColor1: var(--linkHover1);
+						--underlineColor2: var(--linkHover2);
+
 						color: var(--linkHover1);
 					}
 
 					&[aria-current] {
-						--underlineHoverColor1: var(--menuHoverTextColor1);
-						--underlineHoverColor2: var(--menuHoverTextColor2);
+						--underlineColor1: var(--menuHoverTextColor1);
+						--underlineColor2: var(--menuHoverTextColor2);
 
 						text-decoration: none !important;
 						font-style: italic;

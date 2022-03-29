@@ -25,6 +25,7 @@
 			"javascript/**": true,
 			"local.barnarve/**": true
 		},
-		"liveServer.settings.multiRootWorkspaceName": "root"
+		"liveServer.settings.multiRootWorkspaceName": "root",
+		"svg.preview.background": "transparent"
 	}
 }

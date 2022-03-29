@@ -400,8 +400,6 @@ main > .breadcrumbs ol li::before {
   color: var(--mdColor1);
 }
 main > .breadcrumbs ol li > a {
-  --underlineHoverColor1: var(--linkHover1);
-  --underlineHoverColor2: var(--linkHover2);
   display: inline;
   position: relative;
   text-decoration: none;
@@ -424,11 +422,13 @@ main > .breadcrumbs ol li > a:focus-visible {
   }
 }
 main > .breadcrumbs ol li > a:hover, main > .breadcrumbs ol li > a:focus-visible {
+  --underlineColor1: var(--linkHover1);
+  --underlineColor2: var(--linkHover2);
   color: var(--linkHover1);
 }
 main > .breadcrumbs ol li > a[aria-current] {
-  --underlineHoverColor1: var(--menuHoverTextColor1);
-  --underlineHoverColor2: var(--menuHoverTextColor2);
+  --underlineColor1: var(--menuHoverTextColor1);
+  --underlineColor2: var(--menuHoverTextColor2);
   text-decoration: none !important;
   font-style: italic;
   color: var(--textBoldColor);

@@ -167,10 +167,10 @@
 }
 
 @media (pointer: fine) {
-  .sideMenu [role=menuitem] {
+  .sideMenu li > [role=menuitem] {
     font-size: 1.1rem;
   }
-  .sideMenu [role=menuitem] + .icon {
+  .sideMenu li > [role=menuitem] + .icon {
     font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
@@ -203,28 +203,25 @@
     transition: none ease 0.2s;
     transition-property: transform;
   }
-  .sideMenu [role=menuitem].alwaysOpen + .icon {
-    transform: rotate(0) !important;
-  }
-  .sideMenu [role=menuitem].alwaysOpen + .icon + .submenu {
-    height: max-content !important;
-  }
-  .sideMenu .submenu {
+  .sideMenu li > .submenu {
     height: 0;
   }
-
-  li.hasSubmenu:hover {
+  .sideMenu li.alwaysOpen > .icon {
+    transform: rotate(0) !important;
+  }
+  .sideMenu li.alwaysOpen > .submenu {
+    height: max-content !important;
+  }
+  .sideMenu li.hasSubmenu:not(.alwaysOpen):hover {
     outline-width: 2px;
     outline-color: var(--inputHoverBorder1);
   }
-
-  li:hover > .submenu,
-[role=menuitem][aria-expanded=true] ~ .submenu {
+  .sideMenu li:hover > .submenu,
+.sideMenu li [role=menuitem][aria-expanded=true] ~ .submenu {
     height: var(--height, max-content);
   }
-
-  li:hover > [role=menuitem] + .icon,
-[role=menuitem][aria-expanded=true] + .icon {
+  .sideMenu li:hover > .icon,
+.sideMenu li [role=menuitem][aria-expanded=true] ~ .icon {
     transform: rotate(0deg);
   }
 }/*# sourceMappingURL=input.css.map */

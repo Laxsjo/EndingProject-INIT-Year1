@@ -34,10 +34,13 @@ body {
 		width: 100%;
 		height: 100%;
 
-		background-color: var(--contentBackdropBackground2);
+		// background-color: var(--contentBackdropBackground2);
 
-		-webkit-mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
-		mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+		background-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+		@include colorFilter(hsl(120, 14.5%, 17.1%))
+			// -webkit-mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+			// mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+;
 	}
 }
 

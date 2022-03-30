@@ -1,12 +1,6 @@
 @use 'resources' as *;
 @use 'icons.scss' as *;
 
-@import url('/EndingProject-INIT-Year1/css/icons.css');
-@import url('/EndingProject-INIT-Year1/css/theme.css');
-@import url('/EndingProject-INIT-Year1/css/definitions.css');
-@import url('/EndingProject-INIT-Year1/css/input.css');
-@import url('/EndingProject-INIT-Year1/css/document.css');
-
 :root {
 	--goldenRatio: 1.61803398875;
 
@@ -288,9 +282,10 @@ a.documentLink.fancyLink {
 	h4,
 	h5,
 	h5 {
-		margin-top: 0;
-
 		font-size: 1.4rem;
+	}
+	& > :first-child {
+		margin-top: 0;
 	}
 
 	p {

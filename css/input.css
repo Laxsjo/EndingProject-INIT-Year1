@@ -1,4 +1,9 @@
 .material-icons {
+  display: inline-block;
+  overflow: hidden;
+  overflow: clip;
+  width: 1em;
+  height: 1em;
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
@@ -171,6 +176,11 @@
     font-size: 1.1rem;
   }
   .sideMenu li > [role=menuitem] + .icon {
+    display: inline-block;
+    overflow: hidden;
+    overflow: clip;
+    width: 1em;
+    height: 1em;
     font-family: "Material Icons";
     font-weight: normal;
     font-style: normal;
@@ -195,8 +205,7 @@
     /* IE10+/Edge */
     user-select: none;
     /* Standard */
-    display: inline-block;
-    font-family: "material icons outlined";
+    font-family: "Material Icons Outlined";
     font-size: var(--md-medium);
     color: var(--mdColor1);
     transform: rotate(90deg);

@@ -1,4 +1,11 @@
 @mixin icon {
+	display: inline-block;
+	overflow: hidden;
+	overflow: clip;
+
+	width: 1em;
+	height: 1em;
+
 	font-family: 'Material Icons';
 	font-weight: normal;
 	font-style: normal;

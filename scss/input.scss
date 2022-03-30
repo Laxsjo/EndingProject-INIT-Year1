@@ -111,11 +111,8 @@
 			& > [role='menuitem'] {
 				font-size: 1.1rem;
 				& + .icon {
-					@include icon();
+					@include iconOutlined();
 
-					display: inline-block;
-
-					font-family: 'material icons outlined';
 					font-size: var(--md-medium);
 
 					color: var(--mdColor1);

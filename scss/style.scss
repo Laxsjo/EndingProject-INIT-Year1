@@ -176,8 +176,8 @@ ul {
 }
 .fancyLink[target='_blank']::after {
 	content: 'open_in_new';
+	@include iconOutlined;
 	font-size: 0.9em;
-	font-family: 'Material Icons Outlined';
 	vertical-align: text-top;
 }
 .fancyLink.noUnderline {

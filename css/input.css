@@ -114,7 +114,7 @@
   transition: background-size 0.2s;
   --underlineColor1: var(--menuTextColor1);
   --underlineColor2: var(--menuTextColor2);
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--menuTextColor1);
   text-decoration: none !important;
 }

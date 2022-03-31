@@ -202,7 +202,7 @@ header .menu > ul li a {
   --underlineColor1: var(--menuTextColor1);
   --underlineColor2: var(--menuTextColor1);
   display: block;
-  font-size: 2rem;
+  font-size: 1.4rem;
   text-decoration: none !important;
   color: var(--menuTextColor1);
 }
@@ -254,7 +254,7 @@ header .menu > ul li a .icon {
   user-select: none;
   /* Standard */
   font-family: "Material Icons Outlined";
-  font-size: var(--md-large);
+  font-size: var(--md-medium);
 }
 header .menu > ul li a[aria-current] {
   color: var(--menuColorColor2);
@@ -390,8 +390,9 @@ main > .breadcrumbs h1 {
 }
 main > .breadcrumbs ol {
   display: flex;
-  gap: calc(var(--gapWithinPair) / 2 - var(--md-large) / 2);
+  flex-flow: row wrap;
   align-items: stretch;
+  gap: calc(var(--gapWithinPair) / 2 - var(--md-large) / 2);
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -402,7 +403,7 @@ main > .breadcrumbs ol li {
   gap: calc(var(--gapWithinPair) / 2 - var(--md-large) / 2);
   align-items: center;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 main > .breadcrumbs ol li::before {
   content: "navigate_next";

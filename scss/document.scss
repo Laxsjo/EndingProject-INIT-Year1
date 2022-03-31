@@ -154,7 +154,7 @@ header {
 
 					display: block;
 
-					font-size: 2rem;
+					font-size: 1.4rem;
 					text-decoration: none !important;
 
 					color: var(--menuTextColor1);
@@ -164,7 +164,7 @@ header {
 					}
 					.icon {
 						@include iconOutlined;
-						font-size: var(--md-large);
+						font-size: var(--md-medium);
 					}
 
 					&[aria-current] {
@@ -360,8 +360,9 @@ main {
 
 		ol {
 			display: flex;
-			gap: calc(var(--gapWithinPair) / 2 - (var(--md-large) / 2));
+			flex-flow: row wrap;
 			align-items: stretch;
+			gap: calc(var(--gapWithinPair) / 2 - (var(--md-large) / 2));
 
 			list-style-type: none;
 
@@ -376,7 +377,7 @@ main {
 
 				margin: 0;
 
-				font-size: 1.5rem;
+				font-size: 1.3rem;
 
 				&::before {
 					content: 'navigate_next';

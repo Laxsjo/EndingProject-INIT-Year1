@@ -138,7 +138,7 @@ header {
 
 			width: max-content;
 			margin: 0;
-			padding: 0.5rem var(--containerPadding-page);
+			padding: 0 var(--containerPadding-page);
 
 			li {
 				margin: 0;
@@ -154,7 +154,8 @@ header {
 
 					display: block;
 
-					font-size: 1.4rem;
+					font-size: 1.2rem;
+					line-height: 2.75rem;
 					text-decoration: none !important;
 
 					color: var(--menuTextColor1);
@@ -178,9 +179,16 @@ header {
 
 						color: var(--menuHoverTextColor1);
 					}
+				}
+			}
 
-					@media (pointer: fine) {
+			@media (pointer: fine) {
+				padding-block: 0.5rem;
+
+				li {
+					a {
 						font-size: 1rem;
+						line-height: 1.2rem;
 
 						.icon {
 							font-size: var(--md-medium);
@@ -215,6 +223,7 @@ header {
 	:root.scrolling & {
 		--width: #{$logoWidthSmall};
 		// align-items: center;
+		flex-direction: row;
 
 		// padding-block: var(--containerPadding-main);
 
@@ -225,7 +234,7 @@ header {
 
 		.logo,
 		.menu {
-			border: none;
+			// border: none;
 			border-color: transparent;
 			background: none;
 
@@ -237,6 +246,7 @@ header {
 		.logo {
 			top: 0;
 			margin-block: calc(var(--containerPadding-fieldset) * -1);
+			align-self: center;
 
 			// transform: scale(
 			// 	calc(noUnit($logoWidthLarge) / noUnit($logoWidthSmall))
@@ -255,45 +265,127 @@ header {
 		// }
 	}
 
-	@media (max-width: 60rem) {
-		--width: 15rem;
-		// .logo,
-		// .menu {
-		// }
-		.logo {
-			img {
-				transition: none ease var(--duration);
-				transition-property: width;
-			}
-			.name {
-				transition: none ease var(--duration);
-				transition-property: font-size;
-			}
+	$logoSmallWidthSmall: 8rem;
+	$logoSmallWidthLarge: 15rem;
+	--logoSmallWidth: calc(
+		((#{$logoSmallWidthSmall} - 0.5rem - 0.5rem * 2) * var(--goldenRatio)) /
+			(1 + var(--goldenRatio))
+	);
+	@keyframes logoSmallEnlarge {
+		0% {
+			transform: scale(
+				calc(
+					noUnit($logoSmallWidthSmall) / noUnit($logoSmallWidthLarge)
+				)
+			);
 		}
-		.menu {
-			align-self: stretch;
-			ul {
-				transition: none ease var(--duration);
-				transition-property: padding;
+		100% {
+			transform: scale(1);
+		}
+	}
+	@keyframes logoSmallShrink {
+		0% {
+			transform: scale(
+				calc(
+					noUnit($logoSmallWidthLarge) / noUnit($logoSmallWidthSmall)
+				)
+			);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+	@keyframes menuSmallEnlarge {
+		0% {
+			transform: translateX(calc(var(--logoSmallWidth)));
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
+	@keyframes menuSmallShrink {
+		0% {
+			transform: translateX(calc(var(--logoSmallWidth) * -1));
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+	@media (max-width: 60rem) and (min-width: 19rem) {
+		:root:not(.scrolling) & {
+			.logo {
+				animation: logoSmallEnlarge ease var(--duration);
+			}
+			.menu {
+				animation: menuSmallEnlarge ease var(--duration);
 			}
 		}
 
 		:root.scrolling & {
-			--width: 8rem;
+			.logo {
+				animation: logoSmallShrink ease var(--duration);
+			}
+			.menu {
+				animation: menuSmallShrink ease var(--duration);
+			}
+		}
+	}
+	@media (max-width: 60rem) {
+		--width: #{$logoSmallWidthLarge};
+		// .logo,
+		// .menu {
+		// }
+
+		.logo {
+			img {
+				transition: none ease var(--duration);
+				// transition-property: width;
+			}
+			.name {
+				transition: none ease var(--duration);
+				// transition-property: font-size;
+			}
+		}
+		.menu {
+			ul {
+				transition: none ease var(--duration);
+				transition-property: padding;
+
+				padding-inline: var(--containerPadding-medium);
+			}
+		}
+
+		:root.scrolling & {
+			--width: #{$logoSmallWidthSmall};
+
+			padding-left: 0;
 
 			.logo {
+				// animation: logoShrink ease var(--duration);
 				.name {
 					display: none;
 				}
 			}
 			.menu {
+				// animation: menuShrink ease var(--duration);
+				align-self: stretch;
+
 				ul {
 					padding-inline: 0;
+					// padding-bottom: 0;
 				}
 			}
 		}
 	}
-	@media (min-width: 66rem) {
+	@media (max-width: 30rem) {
+		padding: var(--containerPadding-medium);
+
+		:root.scrolling & {
+			padding-bottom: 0;
+		}
+	}
+	@media (min-width: 60rem) {
 		flex-direction: row;
 
 		:root:not(.scrolling) & {

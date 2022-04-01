@@ -168,6 +168,10 @@ header {
   padding: var(--containerPadding-page);
   background-color: transparent;
   transition: none linear var(--shortDuration);
+  --logoSmallWidth: calc(
+  	((8rem - 0.5rem - 0.5rem * 2) * var(--goldenRatio)) /
+  		(1 + var(--goldenRatio))
+  );
 }
 header .logo {
   transform-origin: top left;
@@ -186,7 +190,7 @@ header .menu > ul {
   gap: var(--gapPair);
   width: max-content;
   margin: 0;
-  padding: 0.5rem var(--containerPadding-page);
+  padding: 0 var(--containerPadding-page);
 }
 header .menu > ul li {
   margin: 0;
@@ -202,7 +206,8 @@ header .menu > ul li a {
   --underlineColor1: var(--menuTextColor1);
   --underlineColor2: var(--menuTextColor1);
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  line-height: 2.75rem;
   text-decoration: none !important;
   color: var(--menuTextColor1);
 }
@@ -265,8 +270,12 @@ header .menu > ul li a:hover, header .menu > ul li a:focus-visible {
   color: var(--menuHoverTextColor1);
 }
 @media (pointer: fine) {
+  header .menu > ul {
+    padding-block: 0.5rem;
+  }
   header .menu > ul li a {
     font-size: 1rem;
+    line-height: 1.2rem;
   }
   header .menu > ul li a .icon {
     font-size: var(--md-medium);
@@ -289,13 +298,13 @@ header .menu:focus-within {
 }
 :root.scrolling header {
   --width: 15rem;
+  flex-direction: row;
   background-color: var(--menuBackground1);
   box-shadow: 0 0 1rem var(--shadowColor);
   transition-property: background-color;
 }
 :root.scrolling header .logo,
 :root.scrolling header .menu {
-  border: none;
   border-color: transparent;
   background: none;
 }
@@ -306,6 +315,53 @@ header .menu:focus-within {
 :root.scrolling header .logo {
   top: 0;
   margin-block: calc(var(--containerPadding-fieldset) * -1);
+  align-self: center;
+}
+@keyframes logoSmallEnlarge {
+  0% {
+    transform: scale(0.5333333333);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes logoSmallShrink {
+  0% {
+    transform: scale(1.875);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes menuSmallEnlarge {
+  0% {
+    transform: translateX(calc(var(--logoSmallWidth)));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes menuSmallShrink {
+  0% {
+    transform: translateX(calc(var(--logoSmallWidth) * -1));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@media (max-width: 60rem) and (min-width: 19rem) {
+  :root:not(.scrolling) header .logo {
+    animation: logoSmallEnlarge ease var(--duration);
+  }
+  :root:not(.scrolling) header .menu {
+    animation: menuSmallEnlarge ease var(--duration);
+  }
+  :root.scrolling header .logo {
+    animation: logoSmallShrink ease var(--duration);
+  }
+  :root.scrolling header .menu {
+    animation: menuSmallShrink ease var(--duration);
+  }
 }
 @media (max-width: 60rem) {
   header {
@@ -313,30 +369,38 @@ header .menu:focus-within {
   }
   header .logo img {
     transition: none ease var(--duration);
-    transition-property: width;
   }
   header .logo .name {
     transition: none ease var(--duration);
-    transition-property: font-size;
-  }
-  header .menu {
-    align-self: stretch;
   }
   header .menu ul {
     transition: none ease var(--duration);
     transition-property: padding;
+    padding-inline: var(--containerPadding-medium);
   }
   :root.scrolling header {
     --width: 8rem;
+    padding-left: 0;
   }
   :root.scrolling header .logo .name {
     display: none;
+  }
+  :root.scrolling header .menu {
+    align-self: stretch;
   }
   :root.scrolling header .menu ul {
     padding-inline: 0;
   }
 }
-@media (min-width: 66rem) {
+@media (max-width: 30rem) {
+  header {
+    padding: var(--containerPadding-medium);
+  }
+  :root.scrolling header {
+    padding-bottom: 0;
+  }
+}
+@media (min-width: 60rem) {
   header {
     flex-direction: row;
   }

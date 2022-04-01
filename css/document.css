@@ -156,6 +156,7 @@ header {
   --shortDuration: 0.2s;
   --duration: 0.3s;
   --width: 20rem;
+  --paddingInline: var(--containerPadding-page);
   display: flex;
   flex-flow: column-reverse nowrap;
   align-items: flex-start;
@@ -165,7 +166,7 @@ header {
   left: 0;
   right: 0;
   z-index: 5;
-  padding: var(--containerPadding-page);
+  padding: var(--paddingInline) var(--containerPadding-page);
   background-color: transparent;
   transition: none linear var(--shortDuration);
   --logoSmallWidth: calc(
@@ -307,6 +308,7 @@ header .menu:focus-within {
 :root.scrolling header .menu {
   border-color: transparent;
   background: none;
+  transition-property: background-color, border-color;
 }
 :root.scrolling header .logo:focus-within,
 :root.scrolling header .menu:focus-within {
@@ -316,6 +318,26 @@ header .menu:focus-within {
   top: 0;
   margin-block: calc(var(--containerPadding-fieldset) * -1);
   align-self: center;
+}
+@media (max-width: 19rem) {
+  header {
+    --width: 12rem;
+  }
+  :root.scrolling header {
+    --width: 8rem;
+  }
+  :root.scrolling header .logo {
+    display: none;
+  }
+}
+@media (max-width: 30rem) {
+  header {
+    --paddingInline: var(--containerPadding-medium);
+    padding: var(--containerPadding-medium);
+  }
+  :root.scrolling header {
+    padding-bottom: 0;
+  }
 }
 @keyframes logoSmallEnlarge {
   0% {
@@ -335,7 +357,7 @@ header .menu:focus-within {
 }
 @keyframes menuSmallEnlarge {
   0% {
-    transform: translateX(calc(var(--logoSmallWidth)));
+    transform: translateX(calc(var(--logoSmallWidth) + var(--gapPair) + var(--paddingInline)));
   }
   100% {
     transform: translateX(0);
@@ -343,7 +365,7 @@ header .menu:focus-within {
 }
 @keyframes menuSmallShrink {
   0% {
-    transform: translateX(calc(var(--logoSmallWidth) * -1));
+    transform: translateX(calc((var(--logoSmallWidth) + var(--gapPair) + var(--paddingInline)) * -1));
   }
   100% {
     transform: translateX(0);
@@ -351,12 +373,14 @@ header .menu:focus-within {
 }
 @media (max-width: 60rem) and (min-width: 19rem) {
   :root:not(.scrolling) header .logo {
+    transform-origin: top left;
     animation: logoSmallEnlarge ease var(--duration);
   }
   :root:not(.scrolling) header .menu {
     animation: menuSmallEnlarge ease var(--duration);
   }
   :root.scrolling header .logo {
+    transform-origin: center left;
     animation: logoSmallShrink ease var(--duration);
   }
   :root.scrolling header .menu {
@@ -380,7 +404,7 @@ header .menu:focus-within {
   }
   :root.scrolling header {
     --width: 8rem;
-    padding-left: 0;
+    padding-inline: 0;
   }
   :root.scrolling header .logo .name {
     display: none;
@@ -390,14 +414,6 @@ header .menu:focus-within {
   }
   :root.scrolling header .menu ul {
     padding-inline: 0;
-  }
-}
-@media (max-width: 30rem) {
-  header {
-    padding: var(--containerPadding-medium);
-  }
-  :root.scrolling header {
-    padding-bottom: 0;
   }
 }
 @media (min-width: 60rem) {
@@ -415,17 +431,6 @@ header .menu:focus-within {
   }
   :root.scrolling header .menu {
     animation: menuShrink ease var(--duration);
-  }
-}
-@media (max-width: 19rem) {
-  header {
-    --width: 12rem;
-  }
-  :root.scrolling header {
-    --width: 8rem;
-  }
-  :root.scrolling header .logo {
-    display: none;
   }
 }
 

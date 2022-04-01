@@ -99,6 +99,7 @@ header {
 	--shortDuration: 0.2s;
 	--duration: 0.3s;
 	--width: #{$logoWidthLarge};
+	--paddingInline: var(--containerPadding-page);
 
 	display: flex;
 	flex-flow: column-reverse nowrap;
@@ -112,7 +113,7 @@ header {
 	z-index: 5;
 
 	// width: 100%;
-	padding: var(--containerPadding-page);
+	padding: var(--paddingInline) var(--containerPadding-page);
 
 	background-color: transparent;
 
@@ -210,11 +211,11 @@ header {
 
 		&:focus-within {
 			border-color: var(--focusColor2);
-			// outline: 3px solid var(--focusColor2);
 		}
 	}
 
 	:root:not(.scrolling) & {
+		// transition-property: background-color;
 		.logo,
 		.menu {
 			transition-property: background-color, border-color;
@@ -222,10 +223,7 @@ header {
 	}
 	:root.scrolling & {
 		--width: #{$logoWidthSmall};
-		// align-items: center;
 		flex-direction: row;
-
-		// padding-block: var(--containerPadding-main);
 
 		background-color: var(--menuBackground1);
 		box-shadow: 0 0 1rem var(--shadowColor);
@@ -234,9 +232,10 @@ header {
 
 		.logo,
 		.menu {
-			// border: none;
 			border-color: transparent;
 			background: none;
+
+			transition-property: background-color, border-color;
 
 			&:focus-within {
 				outline: 2px solid var(--focusColor2);
@@ -247,22 +246,28 @@ header {
 			top: 0;
 			margin-block: calc(var(--containerPadding-fieldset) * -1);
 			align-self: center;
-
-			// transform: scale(
-			// 	calc(noUnit($logoWidthLarge) / noUnit($logoWidthSmall))
-			// );
-			// transform: scale(calc(var(--largeWidth) / var(--smallWidth)));
-			// --test: 2;
-			// transform: scale(var(--test));
 		}
+	}
 
-		// .menu {
-		// 	padding-block: calc(0.5rem + 2px);
-		// }
+	@media (max-width: 19rem) {
+		--width: 12rem;
 
-		// .logo {
-		// 	--width: 12rem;
+		:root.scrolling & {
+			--width: 8rem;
+			.logo {
+				display: none;
+			}
+		}
+	}
+	@media (max-width: 30rem) {
+		--paddingInline: var(--containerPadding-medium);
+		padding: var(--containerPadding-medium);
+
+		// :root:not(.scrolling) {
 		// }
+		:root.scrolling & {
+			padding-bottom: 0;
+		}
 	}
 
 	$logoSmallWidthSmall: 8rem;
@@ -297,7 +302,12 @@ header {
 	}
 	@keyframes menuSmallEnlarge {
 		0% {
-			transform: translateX(calc(var(--logoSmallWidth)));
+			transform: translateX(
+				calc(
+					var(--logoSmallWidth) + var(--gapPair) +
+						var(--paddingInline)
+				)
+			);
 		}
 		100% {
 			transform: translateX(0);
@@ -305,7 +315,14 @@ header {
 	}
 	@keyframes menuSmallShrink {
 		0% {
-			transform: translateX(calc(var(--logoSmallWidth) * -1));
+			transform: translateX(
+				calc(
+					(
+							var(--logoSmallWidth) + var(--gapPair) +
+								var(--paddingInline)
+						) * -1
+				)
+			);
 		}
 		100% {
 			transform: translateX(0);
@@ -315,6 +332,8 @@ header {
 	@media (max-width: 60rem) and (min-width: 19rem) {
 		:root:not(.scrolling) & {
 			.logo {
+				transform-origin: top left;
+
 				animation: logoSmallEnlarge ease var(--duration);
 			}
 			.menu {
@@ -324,6 +343,8 @@ header {
 
 		:root.scrolling & {
 			.logo {
+				transform-origin: center left;
+
 				animation: logoSmallShrink ease var(--duration);
 			}
 			.menu {
@@ -359,7 +380,7 @@ header {
 		:root.scrolling & {
 			--width: #{$logoSmallWidthSmall};
 
-			padding-left: 0;
+			padding-inline: 0;
 
 			.logo {
 				// animation: logoShrink ease var(--duration);
@@ -376,13 +397,6 @@ header {
 					// padding-bottom: 0;
 				}
 			}
-		}
-	}
-	@media (max-width: 30rem) {
-		padding: var(--containerPadding-medium);
-
-		:root.scrolling & {
-			padding-bottom: 0;
 		}
 	}
 	@media (min-width: 60rem) {
@@ -403,16 +417,6 @@ header {
 			}
 			.menu {
 				animation: menuShrink ease var(--duration);
-			}
-		}
-	}
-	@media (max-width: 19rem) {
-		--width: 12rem;
-
-		:root.scrolling & {
-			--width: 8rem;
-			.logo {
-				display: none;
 			}
 		}
 	}

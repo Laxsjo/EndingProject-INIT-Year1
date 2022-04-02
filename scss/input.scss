@@ -3,8 +3,11 @@
 
 .sideMenu {
 	overflow: hidden;
+	overflow: clip;
 
 	list-style-type: none;
+	display: flex;
+	flex-flow: column nowrap;
 	// [role='menuitem']:not([aria-expanded='true']) + .submenu {
 	// 	// background-color: lightcoral;
 	// 	display: none;
@@ -70,6 +73,8 @@
 			var(--containerPadding-page);
 	}
 	li {
+		display: block;
+
 		margin-bottom: var(--gapWithinSubPair);
 
 		outline-style: dashed;
@@ -85,12 +90,15 @@
 
 	.submenu {
 		overflow: hidden;
+		overflow: clip;
+
+		display: flex;
+		flex-flow: column nowrap;
 
 		height: max-content;
 		margin: -2px;
 		margin-left: calc(var(--containerPadding-fieldset) - 2px);
 		padding: 2px;
-		// padding-top: 0;
 
 		transition: none ease 0.4s;
 		transition-property: height;
@@ -98,10 +106,6 @@
 		:root.jsDisabled & {
 			height: max-content !important;
 		}
-
-		// & > :first-child {
-		// 	margin-top: 2px;
-		// }
 	}
 }
 

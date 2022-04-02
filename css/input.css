@@ -19,6 +19,7 @@
   -moz-font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;
   /* Safari */
@@ -89,7 +90,10 @@
 
 .sideMenu {
   overflow: hidden;
+  overflow: clip;
   list-style-type: none;
+  display: flex;
+  flex-flow: column nowrap;
   margin: 0;
   padding: 0;
   margin-right: var(--gapSection1);
@@ -149,6 +153,7 @@
   padding-inline: var(--containerPadding-main) var(--containerPadding-page);
 }
 .sideMenu li {
+  display: block;
   margin-bottom: var(--gapWithinSubPair);
   outline-style: dashed;
   outline-width: 2px;
@@ -160,6 +165,9 @@
 }
 .sideMenu .submenu {
   overflow: hidden;
+  overflow: clip;
+  display: flex;
+  flex-flow: column nowrap;
   height: max-content;
   margin: -2px;
   margin-left: calc(var(--containerPadding-fieldset) - 2px);
@@ -196,6 +204,7 @@
     -moz-font-feature-settings: "liga";
     -webkit-font-feature-settings: "liga";
     font-feature-settings: "liga";
+    -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     -webkit-user-select: none;
     /* Safari */

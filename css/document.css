@@ -96,6 +96,9 @@ body {
 }
 body::before {
   content: "";
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
   user-select: none;
   pointer-events: none;
   position: absolute;
@@ -105,7 +108,9 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: url("/EndingProject-INIT-Year1/img/backgroundPattern.svg");
+  -webkit-filter: saturate(0%) brightness(0%) invert(17.1%) opacity(1);
   filter: saturate(0%) brightness(0%) invert(17.1%) opacity(1);
+  -webkit-filter: url('data:image/svg+xml;utf8,    <svg xmlns="http://www.w3.org/2000/svg">      <filter id="colorFilter" color-interpolation-filters="sRGB">        <feColorMatrix type="matrix" values="          0 0 0 0 0.1450980392          0 0 0 0 0.1960784314          0 0 0 0 0.1450980392          0 0 0 1 0        "/>      </filter>    </svg>    #colorFilter');
   filter: url('data:image/svg+xml;utf8,    <svg xmlns="http://www.w3.org/2000/svg">      <filter id="colorFilter" color-interpolation-filters="sRGB">        <feColorMatrix type="matrix" values="          0 0 0 0 0.1450980392          0 0 0 0 0.1960784314          0 0 0 0 0.1450980392          0 0 0 1 0        "/>      </filter>    </svg>    #colorFilter');
 }
 

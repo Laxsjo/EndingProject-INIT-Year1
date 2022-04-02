@@ -20,6 +20,7 @@
   -moz-font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;
   /* Safari */
@@ -104,6 +105,7 @@ body {
   margin: 0;
   padding: 0.01px;
   font-family: "Atkinson Hyperlegible", "Noto Sans Display", Arial, sans-serif;
+  line-height: 1.5;
   color: var(--textColor);
   min-height: 100vh;
 }
@@ -210,6 +212,7 @@ dl dd::before {
   -moz-font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;
   /* Safari */
@@ -282,6 +285,7 @@ ul li {
   -moz-font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;
   /* Safari */
@@ -456,6 +460,7 @@ a.documentLink.fancyLink {
   -moz-font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;
   /* Safari */
@@ -578,17 +583,17 @@ a.documentLink.fancyLink {
   border-right-width: 2px;
 }
 .fancyTable thead th {
-  border-inline-width: 0;
+  border-width: 2px 0;
 }
 .fancyTable thead tr:first-child td,
 .fancyTable thead tr:first-child th {
   border-top-width: 0;
 }
 .fancyTable tbody th {
-  border-block-width: 0;
+  border-width: 0 2px;
 }
 .fancyTable tbody td {
-  border-inline-width: 0;
+  border-width: 2px 0;
 }
 .fancyTable tbody tr:last-child td,
 .fancyTable tbody tr:last-child th {
@@ -596,7 +601,8 @@ a.documentLink.fancyLink {
 }
 
 .blackLineArt {
-  filter: invert(100%);
+  -webkit-filter: invert(1);
+  filter: invert(1);
 }
 
 .columnImage {
@@ -659,6 +665,7 @@ a.documentLink.fancyLink {
   	(var(--partWidth) * var(--goldenRatio)) /
   		(1 + var(--goldenRatio))
   );
+  -webkit-filter: invert(1);
   filter: invert(1);
   width: var(--subwidth);
   height: auto;
@@ -718,7 +725,7 @@ a.documentLink.fancyLink {
   padding-inline: 0;
 }
 .rentTable tr.seperator td:nth-child(2) {
-  border-inline-width: 2px;
+  border-width: 0 2px;
 }
 .rentTable tr.seperator td::before {
   content: "";

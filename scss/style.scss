@@ -23,6 +23,7 @@ body {
 	padding: 0.01px;
 
 	font-family: 'Atkinson Hyperlegible', 'Noto Sans Display', Arial, sans-serif;
+	line-height: 1.5;
 
 	color: var(--textColor);
 
@@ -513,7 +514,7 @@ a.documentLink.fancyLink {
 			}
 		}
 		th {
-			border-inline-width: 0;
+			border-width: 2px 0;
 		}
 		tr {
 			&:first-child {
@@ -526,10 +527,10 @@ a.documentLink.fancyLink {
 	}
 	tbody {
 		th {
-			border-block-width: 0;
+			border-width: 0 2px;
 		}
 		td {
-			border-inline-width: 0;
+			border-width: 2px 0;
 		}
 		tr:last-child {
 			td,
@@ -541,7 +542,8 @@ a.documentLink.fancyLink {
 }
 
 .blackLineArt {
-	filter: invert(100%);
+	-webkit-filter: invert(1);
+	filter: invert(1);
 }
 
 .columnImage {
@@ -610,6 +612,7 @@ a.documentLink.fancyLink {
 			);
 			// --subwidth: calc(var(--partWidth) / (1 + var(--goldenRatio)));
 
+			-webkit-filter: invert(1);
 			filter: invert(1);
 
 			width: var(--subwidth);
@@ -706,7 +709,7 @@ a.documentLink.fancyLink {
 
 			// width: 100%;
 			&:nth-child(2) {
-				border-inline-width: 2px;
+				border-width: 0 2px;
 			}
 
 			&::before {

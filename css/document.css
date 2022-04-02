@@ -88,6 +88,22 @@
   --md-negativeMargin: -0.1em;
 }
 
+:root {
+  --headerHeight: 6.8rem;
+}
+
+a,
+area,
+button,
+select,
+input,
+textarea,
+[tabindex],
+[id] {
+  scroll-margin: 5rem;
+  scroll-margin-top: calc(var(--headerHeight) + 5rem);
+}
+
 body {
   display: grid;
   grid-template: 0 min-content 1fr max-content/100%;

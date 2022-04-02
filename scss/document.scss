@@ -3,6 +3,24 @@
 @use 'sass:color';
 @use 'sass:math';
 
+:root {
+	--headerHeight: 6.8rem;
+}
+
+a,
+area,
+button,
+select,
+input,
+textarea,
+[tabindex],
+[id] {
+	scroll-margin: 5rem;
+	scroll-margin-top: calc(
+		var(--headerHeight) + 5rem
+	); // 6.8rem: maximum height of header.
+}
+
 body {
 	// overflow-x: clip;
 

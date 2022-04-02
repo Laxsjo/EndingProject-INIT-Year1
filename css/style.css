@@ -103,7 +103,7 @@
 body {
   margin: 0;
   padding: 0.01px;
-  font-family: "Noto Sans Display", Arial, sans-serif;
+  font-family: "Atkinson Hyperlegible", "Noto Sans Display", Arial, sans-serif;
   color: var(--textColor);
   min-height: 100vh;
 }
@@ -119,6 +119,7 @@ h4,
 h5,
 h6 {
   color: var(--titleTextColor);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -379,6 +380,7 @@ a.documentLink.fancyLink {
 }
 .asideContent.float {
   float: right;
+  margin-top: 0;
 }
 
 .withAsideColumn {
@@ -474,6 +476,7 @@ a.documentLink.fancyLink {
   overscroll-behavior-x: contain;
   width: 100%;
   max-width: 100%;
+  margin-block: var(--gapPair);
   border: 2px solid var(--contentBorder1);
   border-radius: 0.4rem;
 }
@@ -662,12 +665,18 @@ a.documentLink.fancyLink {
   aspect-ratio: 29/18;
 }
 .logo a .name {
-  --factor: 0.281690140845;
+  --factor: 0.1847393732;
+  /* Magic constant that you multiply with your desired width, which gives you the appropriate font size to set.
+  Let s be any arbitrary font size, w be the resulting width of the text element
+  and c be the magic constant that we're looking for.
+  Then c = s / w
+  */
   --subwidth: calc(var(--partWidth) / (1 + var(--goldenRatio)));
   font-size: calc(var(--subwidth) * var(--factor));
   font-family: "EB Garamond", "Times New Roman", serif;
   font-style: italic;
   font-weight: 400;
+  letter-spacing: 0.2em;
   color: var(--titleTextColor);
 }
 

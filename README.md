@@ -1,6 +1,6 @@
-# EndingProject-INIT-Year1
+# Ending Project INIT College Year 1
 
-My final project of year 1 for school at International IT College of Sweden
+My final project of year 1 for school at the International IT College of Sweden
 
 This project consists of the open part of the Barnarve Foundations website.
 

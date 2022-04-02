@@ -37,10 +37,33 @@ body {
 		// background-color: var(--contentBackdropBackground2);
 
 		background-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
-		@include colorFilter(hsl(120, 14.5%, 17.1%))
-			// -webkit-mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
-			// mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
-;
+		@include colorFilter(hsl(120, 14.5%, 17.1%));
+		// -webkit-mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+		// mask-image: url('/EndingProject-INIT-Year1/img/backgroundPattern.svg');
+	}
+}
+
+.skipNav {
+	position: fixed;
+	left: -10000px;
+	z-index: 100;
+
+	&:focus-within {
+		display: flex;
+		flex-flow: column nowrap;
+		gap: var(--gapWithinPair);
+
+		left: 0;
+		top: 0;
+
+		padding: var(--containerPadding-medium) var(--containerPadding-fieldset);
+		border: 0 solid var(--focusColor1);
+		border-right-width: 2px;
+		border-bottom-width: 2px;
+		border-bottom-right-radius: 0.4rem;
+		outline: 3px solid var(--focusColor2);
+
+		background: var(--contentBackground1);
 	}
 }
 
@@ -63,20 +86,29 @@ $logoWidthSmall: 15rem;
 $logoWidthLarge: 20rem;
 @keyframes logoEnlarge {
 	0% {
+		$scale: calc(noUnit($logoWidthSmall) / noUnit($logoWidthLarge));
 		transform: translateY(calc(var(--containerPadding-fieldset) * -1))
-			scale(calc(noUnit($logoWidthSmall) / noUnit($logoWidthLarge)));
+			scale($scale);
+
+		border-width: calc(2px / #{$scale});
 	}
 	100% {
 		transform: translateY(0) scale(1);
+
+		border-width: 2px;
 	}
 }
 @keyframes logoShrink {
 	0% {
-		transform: translateY(var(--containerPadding-fieldset))
-			scale(calc(noUnit($logoWidthLarge) / noUnit($logoWidthSmall)));
+		$scale: calc(noUnit($logoWidthLarge) / noUnit($logoWidthSmall));
+		transform: translateY(var(--containerPadding-fieldset)) scale($scale);
+
+		border-width: calc(2px / #{$scale});
 	}
 	100% {
 		transform: translateY(0) scale(1);
+
+		border-width: 2px;
 	}
 }
 @keyframes menuEnlarge {
@@ -130,6 +162,8 @@ header {
 	.menu {
 		overflow-x: auto;
 		overscroll-behavior-x: contain;
+
+		max-width: 100%;
 
 		& > ul {
 			display: flex;
@@ -278,26 +312,32 @@ header {
 	);
 	@keyframes logoSmallEnlarge {
 		0% {
-			transform: scale(
-				calc(
-					noUnit($logoSmallWidthSmall) / noUnit($logoSmallWidthLarge)
-				)
+			$scale: calc(
+				noUnit($logoSmallWidthSmall) / noUnit($logoSmallWidthLarge)
 			);
+			transform: scale($scale);
+
+			border-width: calc(2px / #{$scale});
 		}
 		100% {
 			transform: scale(1);
+
+			border-width: 2px;
 		}
 	}
 	@keyframes logoSmallShrink {
 		0% {
-			transform: scale(
-				calc(
-					noUnit($logoSmallWidthLarge) / noUnit($logoSmallWidthSmall)
-				)
+			$scale: calc(
+				noUnit($logoSmallWidthLarge) / noUnit($logoSmallWidthSmall)
 			);
+			transform: scale($scale);
+
+			border-width: calc(2px / #{$scale});
 		}
 		100% {
 			transform: scale(1);
+
+			border-width: 2px;
 		}
 	}
 	@keyframes menuSmallEnlarge {
@@ -384,6 +424,7 @@ header {
 
 			.logo {
 				// animation: logoShrink ease var(--duration);
+				transition-property: none;
 				.name {
 					display: none;
 				}

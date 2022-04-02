@@ -109,6 +109,26 @@ body::before {
   filter: url('data:image/svg+xml;utf8,    <svg xmlns="http://www.w3.org/2000/svg">      <filter id="colorFilter" color-interpolation-filters="sRGB">        <feColorMatrix type="matrix" values="          0 0 0 0 0.1450980392          0 0 0 0 0.1960784314          0 0 0 0 0.1450980392          0 0 0 1 0        "/>      </filter>    </svg>    #colorFilter');
 }
 
+.skipNav {
+  position: fixed;
+  left: -10000px;
+  z-index: 100;
+}
+.skipNav:focus-within {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: var(--gapWithinPair);
+  left: 0;
+  top: 0;
+  padding: var(--containerPadding-medium) var(--containerPadding-fieldset);
+  border: 0 solid var(--focusColor1);
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-bottom-right-radius: 0.4rem;
+  outline: 3px solid var(--focusColor2);
+  background: var(--contentBackground1);
+}
+
 .coverImage {
   display: block;
   position: relative;
@@ -123,17 +143,21 @@ body::before {
 @keyframes logoEnlarge {
   0% {
     transform: translateY(calc(var(--containerPadding-fieldset) * -1)) scale(0.75);
+    border-width: calc(2px / 0.75);
   }
   100% {
     transform: translateY(0) scale(1);
+    border-width: 2px;
   }
 }
 @keyframes logoShrink {
   0% {
     transform: translateY(var(--containerPadding-fieldset)) scale(1.3333333333);
+    border-width: calc(2px / 1.3333333333);
   }
   100% {
     transform: translateY(0) scale(1);
+    border-width: 2px;
   }
 }
 @keyframes menuEnlarge {
@@ -183,6 +207,7 @@ header .logo a:focus-visible {
 header .menu {
   overflow-x: auto;
   overscroll-behavior-x: contain;
+  max-width: 100%;
 }
 header .menu > ul {
   display: flex;
@@ -342,17 +367,21 @@ header .menu:focus-within {
 @keyframes logoSmallEnlarge {
   0% {
     transform: scale(0.5333333333);
+    border-width: calc(2px / 0.5333333333);
   }
   100% {
     transform: scale(1);
+    border-width: 2px;
   }
 }
 @keyframes logoSmallShrink {
   0% {
     transform: scale(1.875);
+    border-width: calc(2px / 1.875);
   }
   100% {
     transform: scale(1);
+    border-width: 2px;
   }
 }
 @keyframes menuSmallEnlarge {
@@ -405,6 +434,9 @@ header .menu:focus-within {
   :root.scrolling header {
     --width: 8rem;
     padding-inline: 0;
+  }
+  :root.scrolling header .logo {
+    transition-property: none;
   }
   :root.scrolling header .logo .name {
     display: none;

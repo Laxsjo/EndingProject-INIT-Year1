@@ -610,6 +610,10 @@ main {
 			}
 		}
 	}
+
+	@media (max-width: 30rem) {
+		width: 100%;
+	}
 }
 
 footer {

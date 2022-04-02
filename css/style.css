@@ -521,6 +521,11 @@ a.documentLink.fancyLink {
 .fancyFigure.right {
   float: right;
 }
+@media (max-width: 60rem) {
+  .fancyFigure {
+    margin: var(--gapPair) auto;
+  }
+}
 
 .fancyTable {
   overflow: clip;

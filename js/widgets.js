@@ -290,6 +290,10 @@ export class Submenu extends NestedMenu {
 		this.parentIndex = index;
 		this.alwaysOpen = alwaysOpen;
 
+		for (const item of this.items) {
+			item.tabIndex = -1;
+		}
+
 		let getHeight = () => {
 			let rect = this.container.getBoundingClientRect();
 			console.log(rect.height);

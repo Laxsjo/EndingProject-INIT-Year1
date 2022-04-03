@@ -304,6 +304,16 @@ a.documentLink.fancyLink {
 
 		margin-top: 0;
 	}
+
+	&.blockSymmetric {
+		& > :last-child {
+			margin-bottom: 0;
+
+			& > :last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
 }
 
 .withAsideColumn {

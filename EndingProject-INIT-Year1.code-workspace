@@ -27,6 +27,24 @@
 			"local.barnarve/**": true
 		},
 		"liveServer.settings.multiRootWorkspaceName": "root",
-		"svg.preview.background": "transparent"
+		"svg.preview.background": "transparent",
+
+		"minify.css": {
+			"advanced": true,
+			"aggressiveMerging": true,
+			"compatibility": "*",
+			"inliner": {},
+			"keepBreaks": false,
+			"keepSpecialComments": "*",
+			"mediaMerging": true,
+			"processImport": true,
+			"processImportFrom": ["all"],
+			"rebase": true,
+			"restructuring": true,
+			"root": "${workspaceRoot}",
+			"roundingPrecision": 2,
+			"semanticMerging": false,
+			"shorthandCompacting": true
+		}
 	}
 }

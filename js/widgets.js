@@ -42,7 +42,7 @@ export class Menu {
 			this.handleKeyDown(event);
 		});
 
-		console.log('Created Menu with items', this.items);
+		// console.log('Created Menu with items', this.items);
 	}
 
 	/**
@@ -296,7 +296,7 @@ export class Submenu extends NestedMenu {
 
 		let getHeight = () => {
 			let rect = this.container.getBoundingClientRect();
-			console.log(rect.height);
+			// console.log(rect.height);
 			this.container.style.setProperty(
 				'--height',
 				this.container.scrollHeight + 'px'
@@ -319,16 +319,16 @@ export class Submenu extends NestedMenu {
 	 * @param {-1|1} direction The direction to exit in.
 	 */
 	exitSubmenu(direction) {
-		console.log(
-			'exited submenu in direction',
-			direction,
-			'parent index',
-			this.parentIndex,
-			'parent items',
-			this.parent.items,
-			'parent',
-			this.parent.items[this.parentIndex]
-		);
+		// console.log(
+		// 	'exited submenu in direction',
+		// 	direction,
+		// 	'parent index',
+		// 	this.parentIndex,
+		// 	'parent items',
+		// 	this.parent.items,
+		// 	'parent',
+		// 	this.parent.items[this.parentIndex]
+		// );
 		let index = this.parentIndex + (direction === 1 ? 1 : 0);
 
 		// this.container.classList.remove("expanded");
